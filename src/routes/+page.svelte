@@ -1,8 +1,28 @@
 <style lang="scss">
-    h1{
-       color: red; 
-    }
+    .main-box{
+        height: 100vh;
+        width: 100vw;
+        background-color: #f5f5f5;
+        position: absolute;
+        top: 0;
+        left: 0;
+    };
+    .center{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    };
+    
 </style>
 
-<h1 class="heading">TriDev SvelteKit Base Init w/ Typescript!!</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="main-box">
+<div class="main-links center">
+test
+</div>
+</div>
