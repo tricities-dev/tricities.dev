@@ -1,8 +1,35 @@
+<script>
+    // iport link from './link.svelte';
+    import Link from '../components/link.svelte';
+    import Logo from '../components/logo.svelte';
+</script>
+
 <style lang="scss">
-    h1{
-       color: red; 
+    .dark-mode {
+        // a full screen overlay with a black background
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 1);
+        color: white;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
     }
 </style>
 
-<h1 class="heading">TriDev SvelteKit Base Init w/ Typescript!!</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<!-- full page div making the whole screen dark mode -->
+<div class="dark-mode">
+    
+    <div class="main-container">
+        <Logo/>
+        <Link text="Meetup" link="http://meetup.com/TriDev" />
+    </div>
+</div>
