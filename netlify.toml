@@ -34,7 +34,7 @@
 # Deploy Preview context: all deploys generated from
 # a pull/merge request will inherit these settings.
 [context.deploy-preview]
-  publish = "dist/"
+  publish = "build/"
 
 # Here is an example of how to define context-specific
 # environment variables. Be mindful when using this
@@ -103,5 +103,5 @@
   framework = "vite"
   command = "npm run dev-port3000"
   port = 8888
-  publish = "dist"
+  publish = "build"
 
