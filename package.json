@@ -9,10 +9,12 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"netlify-dev": "netlify dev"
+		"netlify-dev": "netlify dev",
+		"netlify-build": "netlify build"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-netlify": "^1.0.0-next.78",
 		"@sveltejs/kit": "next",
 		"netlify-cli": "^12.0.3",
 		"sass": "^1.55.0",
