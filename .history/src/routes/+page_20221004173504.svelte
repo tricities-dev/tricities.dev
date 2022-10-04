@@ -2,14 +2,7 @@
     // iport link from './link.svelte';
     import Link from '../components/link.svelte';
     import Logo from '../components/logo.svelte';
-    import { onMount } from 'svelte';
-    import { fade } from 'svelte/transition';
-
-    let onLoad = false
-
-    onMount(() => {
-		setTimeout(() => onLoad = true, 50)
-	})
+    import { fade } from 'svelte/transition'
 </script>
 
 <style lang="scss">
@@ -35,18 +28,9 @@
 
 <!-- full page div making the whole screen dark mode -->
 <div class="dark-mode">
-    <!-- { onload &&
-        <div class="main-container" transition:fade>
-            <Logo/>
-            <Link text="Meetup" link="http://meetup.com/TriDev" />
-        </div>
-    } -->
-
-    {#if onLoad }
-        <div class="main-container" transition:fade>
-            <Logo/>
-            <Link text="Meetup" link="http://meetup.com/TriDev" />
-        </div>
-    {/if}
     
+    <div class="main-container" transition:fade={{delay: 500}}>
+        <Logo/>
+        <Link text="Meetup" link="http://meetup.com/TriDev" />
+    </div>
 </div>

@@ -8,7 +8,8 @@
     let onLoad = false
 
     onMount(() => {
-		setTimeout(() => onLoad = true, 50)
+		// setTimeout(() => onLoad = true, 50)
+        console.log('hit');
 	})
 </script>
 
@@ -42,7 +43,7 @@
         </div>
     } -->
 
-    {#if onLoad }
+    {#if onload }
         <div class="main-container" transition:fade>
             <Logo/>
             <Link text="Meetup" link="http://meetup.com/TriDev" />

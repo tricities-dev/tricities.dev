@@ -42,7 +42,7 @@
         </div>
     } -->
 
-    {#if onLoad }
+    {#if onload }
         <div class="main-container" transition:fade>
             <Logo/>
             <Link text="Meetup" link="http://meetup.com/TriDev" />
