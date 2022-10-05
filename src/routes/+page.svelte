@@ -3,6 +3,7 @@
 	import Link from '../components/link.svelte';
 	import Links from '../components/links.svelte';
 	import Logo from '../components/logo.svelte';
+	import Matrix from '../components/matrix.svelte';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
@@ -41,6 +42,7 @@
 <!-- full page div making the whole screen dark mode -->
 <div class="dark-mode">
 	{#if onLoad}
+		<Matrix/>
 		<div class="main-container" transition:fade={{ delay: 500, duration: 500 }}>
 			<Logo />
 			<Links>
