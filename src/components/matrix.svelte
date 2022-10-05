@@ -12,16 +12,39 @@ const screenArray : Array<Array<Character | null>> = [];
 
     const cycleMatrix = (screenArray: Array<Array<Character | null>>, maxHeight: number) => {
     let intervel = setInterval( async () => {
+        //Grab matrix div and clear it
+        let matrixDiv = document.getElementById('matrix');
+        if(matrixDiv){
+            matrixDiv.innerHTML = '';
+        }
+        
         screenArray.forEach((row, rowIndex)=>{
+            //add div to the matrix div
+            console.log("pass")
+            let rowDiv = document.createElement('div');
+            rowDiv.id= `row-${rowIndex}`;
+            rowDiv.classList.add('matrix-div-width');
+            matrixDiv?.appendChild(rowDiv);
+            // for each character in the row append a child <p> with the character.character if it exists or a blank space if null
+            row.forEach((character, characterIndex)=>{
+                console.log("sub pass")
+                let characterDiv = document.createElement('p');
+                characterDiv.id = `character-${characterIndex}`;
+                characterDiv.classList.add('letterBlock')
+                if(character){
+                    characterDiv.innerHTML = character.character;
+                }else{
+                    characterDiv.innerHTML = '&#160';
+                }
+                rowDiv.appendChild(characterDiv);
+            })
             addMatrix(row)
             moveMatrix(row, maxHeight)
-            console.log(row)
         })
     }, 1000);
     return  (() => clearInterval(intervel));
 }
 const matrixOn = () => {
-    console.log(matrix)
     matrix = !matrix;
 }
 
@@ -66,9 +89,23 @@ $: {
     height: 100vh;
 }
 
+//Need to make a row for each child div that is 13px wide
+.parrent-matrix{
+    display: inline-flex;
+}
+
+:global(.matrix-div-width){
+    width: 15px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+:global(.letterBlock){
+    height: 13px;
+}
 </style>
 
-<div class="matrix-body" id="matrix">
+<div class="matrix-body parrent-matrix" id="matrix">
 test
 <button on:click={matrixOn}> test Button</button>
 </div>

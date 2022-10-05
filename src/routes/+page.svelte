@@ -42,9 +42,10 @@
 <!-- full page div making the whole screen dark mode -->
 <div class="dark-mode">
 	{#if onLoad}
-		<Matrix/>
+		
 		<div class="main-container" transition:fade={{ delay: 500, duration: 500 }}>
 			<Logo />
+			<Matrix/>
 			<Links>
 				<Link text="Meetup" link="http://meetup.com/TriDev" icon="meetup.svg" cssClass="block text-center" />
 				<Link text="On Discord" link="http://meetup.com/TriDev" icon="discord.svg" cssClass="block text-center" />
