@@ -13,26 +13,6 @@
 	});
 </script>
 
-<!-- full page div making the whole screen dark mode -->
-<div class="dark-mode">
-	<!-- { onload &&
-        <div class="main-container" transition:fade>
-            <Logo/>
-            <Link text="Meetup" link="http://meetup.com/TriDev" />
-        </div>
-    } -->
-
-	{#if onLoad}
-		<div class="main-container" transition:fade>
-			<Logo />
-			<Links>
-				<Link text="Meetup" link="http://meetup.com/TriDev" icon="meetup.svg" />
-				<Link text="On Discord" link="http://meetup.com/TriDev" icon="discord.svg" />
-			</Links>
-		</div>
-	{/if}
-</div>
-
 <style lang="scss">
 	.dark-mode {
 		// a full screen overlay with a black background
@@ -53,3 +33,16 @@
 		height: 100%;
 	}
 </style>
+
+<!-- full page div making the whole screen dark mode -->
+<div class="dark-mode">
+	{#if onLoad}
+		<div class="main-container" transition:fade={{ delay: 500, duration: 500 }}>
+			<Logo />
+			<Links>
+				<Link text="Meetup" link="http://meetup.com/TriDev" icon="meetup.svg" cssClass="block text-center" />
+				<Link text="On Discord" link="http://meetup.com/TriDev" icon="discord.svg" cssClass="block text-center" />
+			</Links>
+		</div>
+	{/if}
+</div>
