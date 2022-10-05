@@ -5,15 +5,6 @@
 	export let cssClass: string = '';
 </script>
 
-<li class={cssClass}>
-	<a href={link} target="_blank">
-		<button>
-			<img src={icon} alt={text} />
-			<p>{text}</p>
-		</button>
-	</a>
-</li>
-
 <style lang="scss">
 	// todo move to variables.scss
 	$white: #fff;
@@ -71,3 +62,12 @@
 		}
 	}
 </style>
+
+<li class={cssClass}>
+	<a href={link} target="_blank">
+		<button>
+			<img src={icon} alt={text} />
+			<p>{text}</p>
+		</button>
+	</a>
+</li>
