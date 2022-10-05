@@ -25,13 +25,17 @@
 		color: white;
 	}
 
-	.main-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
-	}
+  .main-container {
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 300px;
+      margin: auto;
+
+  }
 </style>
 
 <!-- full page div making the whole screen dark mode -->
