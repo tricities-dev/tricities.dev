@@ -13,9 +13,10 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		width: 100%;
+		max-width: calc(300px + 2rem);
 		list-style: none;
 		gap: 1rem;
 		padding: 0;
-		margin: 0;
 	}
 </style>

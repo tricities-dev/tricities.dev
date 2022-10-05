@@ -26,8 +26,8 @@
 		<div class="main-container" transition:fade>
 			<Logo />
 			<Links>
-				<Link text="Meetup" link="http://meetup.com/TriDev" icon="meetup.svg" color="#ED1C40" />
-				<Link text="Discord" link="http://meetup.com/TriDev" icon="discord.svg" color="#5865F2" />
+				<Link text="Meetup" link="http://meetup.com/TriDev" icon="meetup.svg" />
+				<Link text="On Discord" link="http://meetup.com/TriDev" icon="discord.svg" />
 			</Links>
 		</div>
 	{/if}
