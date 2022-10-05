@@ -26,27 +26,24 @@
 
     .main-container {
         display: flex;
+        gap: 20px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100%;
+        width: 300px;
+        margin: auto;
+         
     }
 </style>
 
 <!-- full page div making the whole screen dark mode -->
 <div class="dark-mode">
-    <!-- { onload &&
-        <div class="main-container" transition:fade>
-            <Logo/>
-            <Link text="Meetup" link="http://meetup.com/TriDev" />
-        </div>
-    } -->
-
     {#if onLoad }
-        <div class="main-container" transition:fade>
+        <div class="main-container" transition:fade={{delay:500, duration:500}}>
             <Logo/>
-            <Link text="Meetup" link="http://meetup.com/TriDev" />
+            <Link text="Meetup" link="http://meetup.com/TriDev" cssClass="block text-center" />
+            <Link text="On Discord" link="https://discord.gg/rrKTYdKq33" cssClass="block text-center" />
         </div>
     {/if}
-    
 </div>
