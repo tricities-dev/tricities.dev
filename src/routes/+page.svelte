@@ -1,29 +1,42 @@
 <script>
     // iport link from './link.svelte';
+    import { onMount } from 'svelte';
+    import { config } from '../stores.js';
     import Link from '../components/link.svelte';
     import Logo from '../components/logo.svelte';
-    import { onMount } from 'svelte';
+    
     import { fade } from 'svelte/transition';
+    console.log($config.screenMode);
 
     let onLoad = false
 
     onMount(() => {
 		setTimeout(() => onLoad = true, 50)
 	})
+    
 </script>
 
 <style lang="scss">
-    .dark-mode {
+    // todo move to variables.scss
+    $white: #fff;
+    $black: #000;
+
+    .app {
         // a full screen overlay with a black background
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 1);
-        color: white;
+        background: $black;
+        color: $white;
+        transition: color .3s ease-in-out;
+        transition: background-color .3s ease-in-out;
     }
-
+    .light-mode {
+        background: $white;
+        color: $black;
+    }
     .main-container {
         display: flex;
         gap: 20px;
@@ -38,7 +51,7 @@
 </style>
 
 <!-- full page div making the whole screen dark mode -->
-<div class="dark-mode">
+<div class={`app ${$config.screenMode}`}>
     {#if onLoad }
         <div class="main-container" transition:fade={{delay:500, duration:500}}>
             <Logo/>

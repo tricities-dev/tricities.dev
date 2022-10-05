@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { config } from '../stores.js';
     export let link: string;
     export let text: string;
     export let cssClass: string = '';
@@ -33,9 +34,18 @@
             background: $white;
             color: $black;
         }
+        &.light-mode {
+            border: 1px solid $black;
+            color: $black;
+
+            &:hover {
+                background: $black;
+                color: $white;
+            }
+        }
     }
 </style>
 
-<a href="{link}" class="border {cssClass}">
+<a href="{link}" class={`border ${cssClass} ${$config.screenMode}`}>
     {text}
 </a>
