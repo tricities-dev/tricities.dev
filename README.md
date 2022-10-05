@@ -3,25 +3,13 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5ed32b41-84a9-4b10-8205-ddecaab3182c/deploy-status)](https://app.netlify.com/sites/tricitiesdev/deploys)
 
 
-## create-svelte
-
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Intro
 
 ## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've cloned this project, you'll need to run `npm install` to grab all of the dependencies necessary.
 
 ```bash
 npm run dev
@@ -29,6 +17,10 @@ npm run dev
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
+
+### Emulating production
+
+Some parts of the running app are Netlify's serverless Functions and other features like URL redirects at the network level. For these, you can run `netlify dev` to spin up the app within the Netlify CLI and view and test the app from within a real Netlify context.
 
 ## Building
 
