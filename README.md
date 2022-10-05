@@ -5,7 +5,11 @@
 
 ## Intro
 
-## Creating a project
+Welcome to the TriDev public website repository!
+
+The TriDev community is yours, and as such, this is an opportunity help contribute and truly make the public face of TriDev your own.
+
+Feel free to add suggestions to Issues and submit pull requests for Issues that aren't taken. Happy hacking! 
 
 ## Developing
 
