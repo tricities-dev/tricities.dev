@@ -11,32 +11,43 @@ const screenArray : Array<Array<Character | null>> = [];
 
 
     const cycleMatrix = (screenArray: Array<Array<Character | null>>, maxHeight: number) => {
-    let intervel = setInterval( async () => {
-        //Grab matrix div and clear it
+                //Grab matrix div and clear it
         let matrixDiv = document.getElementById('matrix');
         if(matrixDiv){
             matrixDiv.innerHTML = '';
         }
-        
-        screenArray.forEach((row, rowIndex)=>{
-            //add div to the matrix div
-            console.log("pass")
+        // make the rowdivs and add them to the matrix div
+        screenArray.forEach((row, index)=> {
             let rowDiv = document.createElement('div');
-            rowDiv.id= `row-${rowIndex}`;
-            rowDiv.classList.add('matrix-div-width');
+            rowDiv.id = `row-${index}`;
+            rowDiv.classList.add('row', 'matrix-div-width');
             matrixDiv?.appendChild(rowDiv);
+        })
+    let intervel = setInterval( async () => {
+        screenArray.forEach((row, rowIndex)=>{
             // for each character in the row append a child <p> with the character.character if it exists or a blank space if null
-            row.forEach((character, characterIndex)=>{
-                console.log("sub pass")
-                let characterDiv = document.createElement('p');
-                characterDiv.id = `character-${characterIndex}`;
-                characterDiv.classList.add('letterBlock')
-                if(character){
-                    characterDiv.innerHTML = character.character;
-                }else{
-                    characterDiv.innerHTML = '&#160';
+                let rowDiv = document.getElementById(`row-${rowIndex}`);
+                if(rowDiv){
+                    rowDiv.innerHTML= '';
                 }
-                rowDiv.appendChild(characterDiv);
+
+            row.forEach((character, characterIndex)=>{
+                //find div with id row-${rowIndex}
+                let rowDiv = document.getElementById(`row-${rowIndex}`);
+                //clear the row div
+
+                //if the character is null add a line break
+                if(character === null){
+                    let lineBreak = document.createElement('br');
+                    rowDiv?.appendChild(lineBreak);
+                } else {
+                    //if the character is not null add a <p> with the character.character
+                    let characterDiv = document.createElement('p');
+                    characterDiv.classList.add('character', `character-strength-${character.strength}`);
+                    characterDiv.innerText = character.character;
+                    rowDiv?.appendChild(characterDiv);
+                }
+                
             })
             addMatrix(row)
             moveMatrix(row, maxHeight)
@@ -96,16 +107,93 @@ $: {
 
 :global(.matrix-div-width){
     width: 15px;
-    margin-left: 1px;
-    margin-right: 1px;
+    min-width: 15px;
+    max-width: 15px;
 }
 
+
+
+:global(.character-strength-5){
+    animation: strength5 1s linear, MoveDown 1s linear;
+}
+
+:global(.character-strength-4){
+    animation: strength4 1s linear, MoveDown 1s linear;
+}
+:global(.character-strength-3){
+    animation: strength3 1s linear, MoveDown 1s linear;
+}
+:global(.character-strength-2){
+    animation: strength2 1s linear, MoveDown 1s linear;
+}
+:global(.character-strength-1){
+    animation: strength1 1s linear, MoveDown 1s linear;
+}
+
+:global(.character){
+    text-shadow: 0 0 10px rgba(25,247,5,0.5);
+}
+
+@keyframes strength5{
+    0%{
+        color:rgba(25, 247, 5, 1);
+    }
+    100%{
+        color:rgba(25, 247, 5, .8)
+    }
+}
+@keyframes strength4{
+    0%{
+        color: rgba(25, 247, 5, .8);
+    }
+    100%{
+        color: rgba(25, 247, 5, .6)
+    }
+}
+@keyframes strength3{
+    0%{
+        color: rgba(25, 247, 5, .6);
+    }
+    100%{
+        color: rgba(25, 247, 5, .4)
+    }
+}
+@keyframes strength2{
+    0%{
+        color: rgba(25, 247, 5, .4);
+    }
+    100%{
+        color: rgba(25, 247, 5, .2)
+    }
+}
+@keyframes strength1{
+    0%{
+        color: rgba(25, 247, 5, .2);
+    }
+    100%{
+        color: rgba(25, 247, 5, 0)
+    }
+}
+
+
+@keyframes MoveDown{
+    0%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(18px);
+    }
+}
 :global(.letterBlock){
     height: 13px;
+    max-height: 13px;
+}
+.matrix-backdrop{
+    z-index: -1;
 }
 </style>
 
-<div class="matrix-body parrent-matrix" id="matrix">
+<div class="matrix-body parrent-matrix matrix-backdrop" id="matrix">
 test
 <button on:click={matrixOn}> test Button</button>
 </div>

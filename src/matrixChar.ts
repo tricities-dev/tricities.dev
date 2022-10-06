@@ -21,7 +21,7 @@ export class Character {
 //will check an array of Character and nulls, and will have a 1 in 10 chance of change first null into a Character
 export function addMatrix(matrixArray: Array<Character | null>) {
   if (matrixArray[0] === null) {
-    if (Math.random() < 0.1) {
+    if (Math.random() < 0.01) {
       matrixArray[0] = new Character();
     }
   }
