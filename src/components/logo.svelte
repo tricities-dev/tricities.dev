@@ -1,7 +1,7 @@
 <script>
     import { config } from '../stores.js';
 
-    const logoImg = $config.screenMode === 'dark-mode' ? "tridev-logo.jpg" : "tridev-logo-light-mode.png"
+    const logoImg = "tridev-logo.jpg";
     console.log('logo $config.screenMode', $config.screenMode);
 </script>
 <style lang="scss">
