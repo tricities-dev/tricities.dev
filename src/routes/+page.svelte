@@ -10,13 +10,9 @@
 
     let onLoad = false;
     
-
     onMount(() => {
         const prefersDarkMode = window.matchMedia("(prefers-color-scheme:dark)").matches;
-        console.log('prefersDarkMode', prefersDarkMode);
-
         prefersDarkMode === false ? $config.screenMode='light-mode' : $config.screenMode='dark-mode'
-
 		setTimeout(() => onLoad = true, 50);
 	})
 </script>
