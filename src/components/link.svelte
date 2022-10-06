@@ -67,7 +67,7 @@
 </style>
 
 <li class={cssClass}>
-	<a href={link} class={`border ${cssClass} ${$config.screenMode}`} target="_blank">
+	<a href={link} class={`border ${cssClass} ${$config.screenMode}`} target="_blank" rel="noreferrer noopener">
 		<img src={icon} alt={text} />
 		<p>{text}</p>
 	</a>
