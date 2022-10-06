@@ -3,24 +3,22 @@
     import { onMount } from 'svelte';
     import { config } from '../stores.js';
     import Link from '../components/link.svelte';
+    import Links from '../components/links.svelte';
     import Logo from '../components/logo.svelte';
-    
-    import { fade } from 'svelte/transition';
-    console.log($config.screenMode);
 
-    let onLoad = false
+    import { fade } from 'svelte/transition';
+
+    let onLoad = false;
 
     onMount(() => {
-		setTimeout(() => onLoad = true, 50)
+		setTimeout(() => onLoad = true, 50);
 	})
-    
 </script>
 
 <style lang="scss">
     // todo move to variables.scss
     $white: #fff;
     $black: #000;
-
     .app {
         // a full screen overlay with a black background
         position: fixed;
@@ -30,12 +28,22 @@
         height: 100%;
         background: $black;
         color: $white;
-        transition: color .3s ease-in-out;
-        transition: background-color .3s ease-in-out;
+        transition: all .3s ease-in-out;
+        .switch {
+            filter: invert(1);
+            width: 25px;
+            cursor: pointer;
+            transform: none;
+            &:hover {
+                transform: rotate(10deg);
+            }
+        }
     }
     .light-mode {
         background: $white;
-        color: $black;
+        .switch {
+            filter: invert(0);
+        }
     }
     .main-container {
         display: flex;
@@ -51,12 +59,21 @@
 </style>
 
 <!-- full page div making the whole screen dark mode -->
-<div class={`app ${$config.screenMode}`}>
-    {#if onLoad }
-        <div class="main-container" transition:fade={{delay:500, duration:500}}>
-            <Logo/>
-            <Link text="Meetup" link="http://meetup.com/TriDev" cssClass="block text-center" />
-            <Link text="On Discord" link="https://discord.gg/rrKTYdKq33" cssClass="block text-center" />
-        </div>
-    {/if}
+<div class={`app ${$config.screenMode}`}>   
+	{#if onLoad}
+		<div class="main-container" transition:fade={{ delay: 500, duration: 500 }}>
+			<Logo />
+			<Links>
+				<Link text="Meetup" link="http://meetup.com/TriDev" icon="meetup.svg" cssClass="block text-center" />
+				<Link text="On Discord" link="http://meetup.com/TriDev" icon="discord.svg" cssClass="block text-center" />
+			</Links>
+            <img 
+                class="switch"
+                src="lightbulb.svg" 
+                alt={`Turn ${ $config.screenMode === 'dark-mode' ? 'on' : 'off'} the lights`}
+                on:click={ () => $config.screenMode === 'dark-mode' ? $config.screenMode='light-mode' : $config.screenMode='dark-mode' }
+            />
+		</div>
+	{/if}
+    
 </div>

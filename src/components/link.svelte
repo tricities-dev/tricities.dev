@@ -1,8 +1,9 @@
 <script lang="ts">
+	export let link: string;
+	export let text: string;
+	export let icon: string;
+	export let cssClass: string = '';
     import { config } from '../stores.js';
-    export let link: string;
-    export let text: string;
-    export let cssClass: string = '';
 </script>
 
 <style lang="scss">
@@ -10,42 +11,59 @@
     $white: #fff;
     $black: #000;
 
-    .border {
-        display: flex;
-        justify-content: center;
-        padding: 1rem;
-        border: 1px solid $white;
-    }
-    a {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: $white;
-        background: transparent;
-        text-decoration: none;
-        transition: all .3s ease-in-out;
-        &.block {
-            display: block;
-            width: 100%;
-        }
+	li {
+		a {
+			text-decoration: none;
+            display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 1rem;
+			padding: 1rem;
+			color: $white;
+			background: none;
+			border: 1px solid $white;
+			cursor: pointer;
+			filter: none;
+			transition: all 0.3s ease-in-out;
 
-        &.text-center {
-            text-align: center;
-        }
-        &:hover {
-            background: $white;
-            color: $black;
-        }
-        &.light-mode {
-            border: 1px solid $black;
-            color: $black;
+			img {
+				width: 35px;
+				height: 35px;
+			}
 
-            &:hover {
-                background: $black;
-                color: $white;
-            }
-        }
+			p {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				font-size: 1rem;
+				font-weight: 600;
+				background: transparent;
+				margin: 0;
+			}
+			&:hover {
+				background: $white;
+				img {
+					filter: invert(1);
+				}
+			}
+			&.text-center {
+				text-align: center;
+			}
+			&:hover {
+				background: $white;
+				color: $black;
+			}
+			&.light-mode {
+				filter: invert(1);
+				&:hover {
+					filter: unset;
+				}
+			}
+		}
     }
 </style>
 
-<a href="{link}" class={`border ${cssClass} ${$config.screenMode}`}>
-    {text}
-</a>
+<li class={cssClass}>
+	<a href={link} class={`border ${cssClass} ${$config.screenMode}`} target="_blank">
+		<img src={icon} alt={text} />
+		<p>{text}</p>
+	</a>
+</li>

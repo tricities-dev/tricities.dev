@@ -2,6 +2,7 @@
     import { config } from '../stores.js';
 
     const logoImg = $config.screenMode === 'dark-mode' ? "tridev-logo.jpg" : "tridev-logo-light-mode.png"
+    console.log('logo $config.screenMode', $config.screenMode);
 </script>
 <style lang="scss">
     // todo move to variables.scss
@@ -12,11 +13,12 @@
         max-width: 300px;
         display: flex;
         justify-content: center;
-        padding: 1rem;
         border: 1px solid $white;
+        filter: none;
+        transition: all 0.3s ease-in-out;
 
         &.light-mode {
-            border-color: $black;
+            filter: invert(1);
         }
     }
 </style>
