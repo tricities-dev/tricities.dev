@@ -64,8 +64,8 @@
 		<div class="main-container" transition:fade={{ delay: 500, duration: 500 }}>
 			<Logo />
 			<Links>
-				<Link text="Meetup" link="http://meetup.com/TriDev" icon="meetup.svg" cssClass="block text-center" />
-				<Link text="On Discord" link="http://meetup.com/TriDev" icon="discord.svg" cssClass="block text-center" />
+				<Link text="Meetup" link="http://meetup.com/TriDev" icon="meetup.svg" />
+				<Link text="On Discord" link="http://meetup.com/TriDev" icon="discord.svg" />
 			</Links>
             <img 
                 class="switch"
