@@ -37,12 +37,18 @@
             &:hover {
                 transform: rotate(10deg);
             }
+            &:focus {
+                filter: invert(0);
+            }
         }
     }
     .light-mode {
         background: $white;
         .switch {
             filter: invert(0);
+            &:focus {
+                filter: invert(1);
+            }
         }
     }
     .main-container {
@@ -71,7 +77,10 @@
                 class="switch"
                 src="lightbulb.svg" 
                 alt={`Turn ${ $config.screenMode === 'dark-mode' ? 'on' : 'off'} the lights`}
-                on:click={ () => $config.screenMode === 'dark-mode' ? $config.screenMode='light-mode' : $config.screenMode='dark-mode' }
+                on:click={ () => {
+                    $config.screenMode === 'dark-mode' ? $config.screenMode='light-mode' : $config.screenMode='dark-mode'
+                    blur()
+                } }
             />
 		</div>
 	{/if}
