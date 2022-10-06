@@ -61,7 +61,7 @@ const onKeyDownPassWord = (e: KeyboardEvent) => {
             addMatrix(row)
             moveMatrix(row, maxHeight)
         })
-    }, 1000);
+    }, 250);
     return  (() => clearInterval(intervel));
 }
 const matrixOn = () => {
@@ -123,20 +123,20 @@ $: {
 
 
 :global(.character-strength-5){
-    animation: strength5 1s linear, MoveDown 1s linear;
+    animation: strength5 0.25s linear, MoveDown 0.25s linear;
 }
 
 :global(.character-strength-4){
-    animation: strength4 1s linear, MoveDown 1s linear;
+    animation: strength4 0.25s linear, MoveDown 0.25s linear;
 }
 :global(.character-strength-3){
-    animation: strength3 1s linear, MoveDown 1s linear;
+    animation: strength3 0.25s linear, MoveDown 0.25s linear;
 }
 :global(.character-strength-2){
-    animation: strength2 1s linear, MoveDown 1s linear;
+    animation: strength2 0.25s linear, MoveDown 0.25s linear;
 }
 :global(.character-strength-1){
-    animation: strength1 1s linear, MoveDown 1s linear;
+    animation: strength1 0.25s linear, MoveDown 0.25s linear;
 }
 
 :global(.character){
