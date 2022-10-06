@@ -11,7 +11,7 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"netlify-dev": "netlify dev",
 		"netlify-build": "netlify build",
-		"eslint": "eslint --ext .js,.ts,.svelte"
+		"lint": "eslint --ext .js,.ts,.svelte"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
