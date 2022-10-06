@@ -8,6 +8,15 @@ let clear : () => void | null;
 let arrayHeight: number = 0;
 let arrayWidth: number = 0;
 const screenArray : Array<Array<Character | null>> = [];
+let matrixWord: string = "";
+
+const onKeyDownPassWord = (e: KeyboardEvent) => {
+    const key = e.key;
+    matrixWord += key;
+    if(matrixWord.includes("neo")){
+        matrix = true;
+    }
+}
 
 
     const cycleMatrix = (screenArray: Array<Array<Character | null>>, maxHeight: number) => {
@@ -193,7 +202,6 @@ $: {
 }
 </style>
 
-<div class="matrix-body parrent-matrix matrix-backdrop" id="matrix">
-test
-<button on:click={matrixOn}> test Button</button>
+<div class="matrix-body parrent-matrix matrix-backdrop" id="matrix" >
 </div>
+<svelte:window on:keydown|preventDefault={onKeyDownPassWord}/>
