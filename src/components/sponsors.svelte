@@ -21,19 +21,19 @@
 		logoLight: string;
 	}
 
-	const rotateLeft = (e) => {
-		const transitioningImage: Sponsor = sponsors[sponsors.length - 1];
+	const rotateLeft = () => {
+		const transitioningImage: HTMLElement = document.getElementById(sponsors[sponsors.length - 1].id) as HTMLElement;
 		// set opacity style of transitioning image to 0
-		document.getElementById(transitioningImage.id).style.opacity = '0';
+		transitioningImage.style.opacity = '0';
 		sponsors = [sponsors[sponsors.length - 1], ...sponsors.slice(0, sponsors.length - 1)];
-		setTimeout(() => (document.getElementById(transitioningImage.id).style.opacity = '1'), speed);
+		setTimeout(() => (transitioningImage.style.opacity = '1'), speed);
 	};
 
-	const rotateRight = (e) => {
-		const transitioningImage: Sponsor = sponsors[0];
-		document.getElementById(transitioningImage.id).style.opacity = '0';
+	const rotateRight = () => {
+		const transitioningImage: HTMLElement = document.getElementById(sponsors[0].id) as HTMLElement;
+		transitioningImage.style.opacity = '0';
 		sponsors = [...sponsors.slice(1, sponsors.length), sponsors[0]];
-		setTimeout(() => (document.getElementById(transitioningImage.id).style.opacity = '1'), speed);
+		setTimeout(() => (transitioningImage.style.opacity = '1'), speed);
 	};
 
 	const startAutoPlay = () => {
