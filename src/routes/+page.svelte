@@ -4,6 +4,8 @@
     import { config } from '../stores.js';
     import Link from '../components/link.svelte';
     import Links from '../components/links.svelte';
+    import Sponsors from '../components/sponsors.svelte';
+    import { sponsors } from '../sponsors.json';
     import Logo from '../components/logo.svelte';
 
     import { fade } from 'svelte/transition';
@@ -69,6 +71,7 @@
 				<Link text="Meetup" link="http://meetup.com/TriDev" icon="meetup.svg" />
 				<Link text="On Discord" link="http://meetup.com/TriDev" icon="discord.svg" />
 			</Links>
+            <Sponsors data={sponsors} />
             <img 
                 class="switch"
                 src="lightbulb.svg" 
