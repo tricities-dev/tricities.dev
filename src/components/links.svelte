@@ -1,9 +1,3 @@
-<script lang="ts">
-	export let href = '';
-
-	let tag = href ? 'a' : 'button';
-</script>
-
 <ul>
 	<slot />
 </ul>

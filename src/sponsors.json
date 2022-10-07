@@ -1,0 +1,36 @@
+{
+    "sponsors" : [
+        {
+            "id": "0",
+            "name": "Spark Plaza",
+            "description": "Meeting Place",
+            "link": "https://sparkplaza.com/",
+            "logoDark": "Spark-Plaza-logo-refresh-horizontal-2018-white.png",
+            "logoLight": "Spark-Plaza-logo-refresh-horizontal-2018.png"
+        },
+        {
+            "id": "1",
+            "name": ".NET Foundation",
+            "description": "Meetup.com Costs",
+            "link": "https://dotnetfoundation.org/",
+            "logoDark": "dotnet.svg",
+            "logoLight": "dotnet.svg"
+        },
+        {
+            "id": "2",
+            "name": "Tek Systems",
+            "description": "Food / Beverage",
+            "link": "http://www.teksystems.com/",
+            "logoDark": "teksystems-logo-white.png",
+            "logoLight": "teksystems-logo.svg"
+        },
+        {
+            "id": "3",
+            "name": "JetBrains",
+            "description": "Free software licenses to be raffled at meetings.",
+            "link": "https://www.jetbrains.com/",
+            "logoDark": "jetbrains.svg",
+            "logoLight": "jetbrains.svg"
+        }
+    ]
+}
