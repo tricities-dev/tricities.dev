@@ -31,6 +31,14 @@
             "link": "https://www.jetbrains.com/",
             "logoDark": "jetbrains.svg",
             "logoLight": "jetbrains.svg"
+        },
+        {
+            "id": "4",
+            "name": "Bitsum",
+            "description": "Real-time CPU optimization and automation software for Windows.",
+            "link": "https://bitsum.com",
+            "logoDark": "bitsum_logo_transparent.webp",
+            "logoLight": "bitsum_logo_transparent.webp"
         }
     ]
 }
