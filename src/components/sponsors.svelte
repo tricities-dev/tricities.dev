@@ -65,7 +65,7 @@
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		overflow-x: hidden;
+		overflow: hidden;
 		border: 1px solid $white;
 
         h2 {
