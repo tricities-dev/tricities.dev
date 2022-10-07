@@ -1,5 +1,5 @@
 {
-    "sponsors" : [
+    "sponsors": [
         {
             "id": "0",
             "name": "Spark Plaza",
@@ -31,6 +31,14 @@
             "link": "https://www.jetbrains.com/",
             "logoDark": "jetbrains.svg",
             "logoLight": "jetbrains.svg"
+        },
+        {
+            "id": "4",
+            "name": "Bitsum",
+            "description": "Real-time CPU optimization and automation software for Windows.",
+            "link": "https://bitsum.com",
+            "logoDark": "bitsum-logo-dark.webp",
+            "logoLight": "bitsum-logo-light.webp"
         }
     ]
 }
