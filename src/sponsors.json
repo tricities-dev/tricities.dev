@@ -1,5 +1,5 @@
 {
-    "sponsors" : [
+    "sponsors": [
         {
             "id": "0",
             "name": "Spark Plaza",
@@ -37,8 +37,8 @@
             "name": "Bitsum",
             "description": "Real-time CPU optimization and automation software for Windows.",
             "link": "https://bitsum.com",
-            "logoDark": "bitsum_logo_transparent.webp",
-            "logoLight": "bitsum_logo_transparent.webp"
+            "logoDark": "bitsum-logo-dark.webp",
+            "logoLight": "bitsum-logo-light.webp"
         }
     ]
 }
