@@ -6,7 +6,6 @@
 	import Matrix from '../components/matrix.svelte';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-
 	let onLoad = false;
 
 	onMount(() => {
