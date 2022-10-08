@@ -25,7 +25,7 @@
     $black: #000;
     .app {
         // a full screen overlay with a black background
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
