@@ -25,7 +25,12 @@
     $black: #000;
     .app {
         // a full screen overlay with a black background
-        position: absolute;
+        position: fixed;
+        @media (max-width: 600px) {
+            position: absolute;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
         top: 0;
         left: 0;
         width: 100%;

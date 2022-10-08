@@ -62,6 +62,7 @@
 
 	.carousel-container {
 		width: 100%;
+		min-height: 300px;
 		position: relative;
 		display: flex;
 		flex-direction: column;
