@@ -101,8 +101,8 @@
 	}
 </style>
 
-<div class="carousel-container {$config.screenMode} {cssClass}">
-    <h2>Sponsors</h2>
+<div class="carousel-container {$config.screenMode} {cssClass}" on:mouseenter={stopAutoPlay} on:mouseleave={startAutoPlay}>
+	<h2>Sponsors</h2>
 	<ul id="carousel-sponsors">
 		{#each sponsors as sponsor (sponsor.id)}
 			<li animate:flip={{ duration: 500 }}>
