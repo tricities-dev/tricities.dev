@@ -101,6 +101,10 @@
 				width: 30px;
 				height: 30px;
 				fill: $white;
+
+				&.light-mode {
+					fill: $black;
+				}
 			}
 		}
 
@@ -130,12 +134,12 @@
 <div class="carousel-container {$config.screenMode} {cssClass}" on:mouseenter={stopAutoPlay} on:mouseleave={startAutoPlay}>
 	<h2>Sponsors</h2>
 	<button class="left" on:click={rotateLeft}>
-		<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="-10 0 64 44">	
+		<svg class="{$config.screenMode}" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="-10 0 64 44">	
 			<path d="M20 44 0 24 20 4l2.8 2.85L5.65 24 22.8 41.15Z"/>
 		</svg>
 	</button>
 	<button class="right" on:click={rotateRight}>
-		<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="-20 0 64 44">
+		<svg class="{$config.screenMode}" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="-20 0 64 44">
 			<path d="m15.2 43.9-2.8-2.85L29.55 23.9 12.4 6.75l2.8-2.85 20 20Z"/>
 		</svg>
 	</button>
