@@ -37,7 +37,7 @@
 				/>
 				<Link
 					text="On Discord"
-					link="http://meetup.com/TriDev"
+					link="https://discord.gg/GX7WQZukYj"
 					icon="discord.svg"
 					aClasses="discord"
 				/>
