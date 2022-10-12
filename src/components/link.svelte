@@ -44,7 +44,7 @@
 			filter: none;
 			transition: all 0.5s ease-in-out;
 
-			&:hover {
+			&:hover, &:focus {
 				background: $white;
 				color: $black;
 
@@ -53,11 +53,11 @@
 				}
 			}
 
-			&.discord:hover {
+			&.discord:hover, &.discord:focus {
 				background: $discord;
 			}
 
-			&.meetup:hover {
+			&.meetup:hover, &.meetup:focus {
 				background: $meetup;
 			}
 

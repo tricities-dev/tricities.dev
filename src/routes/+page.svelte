@@ -53,6 +53,8 @@
 					$config.screenMode === "dark-mode"
 						? ($config.screenMode = "light-mode")
 						: ($config.screenMode = "dark-mode")}
+				role="switch"
+				aria-checked={$config.screenMode === "dark-mode"}
 			/>
 		</div>
 	{/if}
