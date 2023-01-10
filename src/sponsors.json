@@ -26,14 +26,6 @@
         },
         {
             "id": "3",
-            "name": "JetBrains",
-            "description": "Free software licenses to be raffled at meetings.",
-            "link": "https://www.jetbrains.com/",
-            "logoDark": "jetbrains.svg",
-            "logoLight": "jetbrains.svg"
-        },
-        {
-            "id": "4",
             "name": "Bitsum",
             "description": "Real-time CPU optimization and automation software for Windows.",
             "link": "https://bitsum.com",
