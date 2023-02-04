@@ -1,7 +1,7 @@
 <script>
     import { config } from '../stores.js';
 
-    const logoImg = "tridev-logo.jpg";
+    const logoImg = "tridev-logo.svg";
     console.log('logo $config.screenMode', $config.screenMode);
 </script>
 <style lang="scss">
@@ -14,6 +14,7 @@
         display: flex;
         justify-content: center;
         border: 1px solid $white;
+        padding: 3.5rem;
         filter: none;
         transition: all 0.3s ease-in-out;
 
