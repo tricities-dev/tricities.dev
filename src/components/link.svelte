@@ -64,6 +64,8 @@
 			img {
 				width: 35px;
 				height: 35px;
+				filter: invert(0);
+				transition: all 0.5s ease-in-out;
 			}
 
 			p {
