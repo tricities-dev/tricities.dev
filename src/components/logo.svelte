@@ -18,9 +18,10 @@
         filter: none;
         transition: all 0.3s ease-in-out;
 
-        &.light-mode {
+        &.dark-mode {
             filter: invert(1);
         }
     }
+
 </style>
 <img class={`logo ${ $config.screenMode }`} src={logoImg} alt="TriDev Logo" />
