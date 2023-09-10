@@ -15,7 +15,7 @@
   publish = "build/"
 
   # Default Node Environment Version
-  environment = { NODE_VERSION = "16.17.1" }
+  environment = { NODE_VERSION = "16.20.2" }
 
   # Default build command.
   command = "npm run build"
