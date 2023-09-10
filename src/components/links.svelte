@@ -1,16 +1,13 @@
 <ul>
-	<slot />
+  <slot />
 </ul>
 
 <style>
-	ul {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		width: 100%;
-		max-width: calc(300px + 2rem);
-		list-style: none;
-		gap: 1rem;
-		padding: 0;
-	}
+  ul {
+    display: flex;
+    width: fit-content;
+    list-style: none;
+    gap: 1em;
+    padding: 0;
+  }
 </style>
