@@ -14,6 +14,9 @@
 
   publish = "build/"
 
+  # Default Node Environment Version
+  environment = { NODE_VERSION = "16.17.1" }
+
   # Default build command.
   command = "npm run build"
 
@@ -29,7 +32,6 @@
 [context.production]
   publish = "build/"
   command = "npm run build"
-  environment = { NODE_VERSION = "16.17.1" }
 
 # Deploy Preview context: all deploys generated from
 # a pull/merge request will inherit these settings.
