@@ -33,5 +33,9 @@
 		"typescript": "^4.8.4",
 		"vite": "^3.2.7"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"svelte-qrcode": "^1.0.0",
+		"svelte-qrcode-image": "^1.0.0-rc.2"
+	}
 }
