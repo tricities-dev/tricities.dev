@@ -17,10 +17,6 @@
   # Default build command.
   command = "npm run build"
 
-[[plugins]]
-  # Installs the Lighthouse Build Plugin for all deploy contexts
-  package = "@netlify/plugin-lighthouse"
-
 # Production context: all deploys from the Production branch
 # set in your site’s Branches settings in the UI will inherit
 # these settings. You can define environment variables
@@ -29,7 +25,7 @@
 [context.production]
   publish = "build/"
   command = "npm run build"
-  environment = { NODE_VERSION = "16.17.1" }
+#  environment = { NODE_VERSION = "16.17.1" }
 
 # Deploy Preview context: all deploys generated from
 # a pull/merge request will inherit these settings.
@@ -100,7 +96,7 @@
 # for environment variables. Environment variables for Netlify 
 # Dev should be set under [context.dev.environment] instead.
 [dev]
-  framework = "vite"
+  framework = "svelte"
   command = "npm run dev-port3000"
   port = 8888
   publish = "build"
