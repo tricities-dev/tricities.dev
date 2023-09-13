@@ -8,10 +8,10 @@ export declare namespace Type {
 	// interface Platform {}
 
 	interface Advertiser {
-		title: string;
+		id : string;
+		name: string;
 		link: string;
-		logo: string;
-		title: string;
+		logoLight: string;
 		description: string;
 	}
 

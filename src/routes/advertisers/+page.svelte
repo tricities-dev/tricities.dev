@@ -1,71 +1,83 @@
 <script lang="ts">
-  import type { Type } from "../../app.d";
-  import { QRCodeImage } from "svelte-qrcode-image";
-  const advertiser: Type.Advertiser = {
-    link: "http://google.com",
-    logo: "/bitsum-logo-light.webp",
-    title: "Bitsum",
-    description: "Describe what it it is",
+  import Advertiser from "../../components/advertiser.svelte";
+  import type { Type } from "../../app";
+  import { sponsors } from "../../sponsors.json";
+  let currentSlideIndex = 0;
+  let nextSlide: number | undefined;
+  let direction = -1;
+  let slides: Type.Advertiser[] = sponsors;
+  let lengthSlides = slides.length;
+  let moved = false;
+  let transitionable = true;
+
+  const nextIndex = () => {
+    if (direction + currentSlideIndex >= lengthSlides) {
+      return 0;
+    }
+    if (direction + currentSlideIndex < 0) {
+      return lengthSlides - 1;
+    }
+    return direction + currentSlideIndex;
+  };
+
+  const transitionImage = (event: KeyboardEvent) => {
+    const keyPressed = event.key;
+    if ((keyPressed === "a" || keyPressed === "d") && transitionable) {
+      transitionable = false;
+      keyPressed === "a" ? (direction = -1) : (direction = 1);
+      nextSlide = nextIndex();
+      moved = true;
+      setTimeout(() => {
+        moved = false;
+        currentSlideIndex = nextSlide!;
+        nextSlide = undefined;
+        transitionable = true;
+      }, 1500);
+    }
   };
 </script>
 
-<div class="container">
-  <div class="full-screen-ad">
-    <div class="sides advertiser-logo">
-      <img class="center image-size" src={advertiser.logo} />
-    </div>
-    <div class="sides advertiser-info">
-      <p class="title-text">{advertiser.title}</p>
-
-      <div class="content-info">
-        <p>{advertiser.link}</p>
-        <p>{advertiser.description}</p>
-      </div>
-      <div>
-        <div class="qr-code">
-          <QRCodeImage text={advertiser.link} />
+{#if slides}
+  <div class="overflow-hidden container">
+    <div class="width-screen flex" on:keydown={transitionImage} tabindex="0">
+      {#if moved === false && transitionable}
+        <Advertiser advertiser={slides[currentSlideIndex]} />
+      {:else if moved && direction === 1 && nextSlide != undefined}
+        <div class="flex next-image-right">
+          <Advertiser advertiser={slides[currentSlideIndex]} />
+          <Advertiser advertiser={slides[nextSlide]} />
         </div>
-      </div>
+      {:else if moved && direction === -1 && nextSlide != undefined}
+        <div class="flex next-image-left">
+          <Advertiser advertiser={slides[nextSlide]} />
+          <Advertiser advertiser={slides[currentSlideIndex]} />
+        </div>
+      {/if}
     </div>
   </div>
-</div>
+{/if}
 
 <style>
-  .qr-code {
+  @keyframes moveRight {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes moveLeft {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+
+  .flex {
     display: flex;
-    justify-content: center;
-  }
-
-  .content-info {
-    margin-left: 20%;
-    margin-right: 20%;
-    color: aliceblue;
-  }
-
-  p {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-  }
-
-  .title-text {
-    font-size: 5rem;
-    color: white;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  .center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-  }
-
-  .image-size {
-    width: 25%;
-    height: auto;
   }
 
   .container {
@@ -73,23 +85,22 @@
     inset: 0;
   }
 
-  .full-screen-ad {
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .width-screen {
     width: 100vw;
-    display: flex;
   }
 
-  .sides {
-    width: 100%;
-    height: 100vh;
-    background-color: black;
+  .next-image-right {
+    animation-name: moveRight;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
   }
 
-  .advertiser-logo {
-    border-right: 0.5rem solid white;
-  }
-
-  .advertiser-info {
-    border-left: 0.5rem solid white;
-    background-color: black;
+  .next-image-left {
+    animation-name: moveLeft;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
   }
 </style>
