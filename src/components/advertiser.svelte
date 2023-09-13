@@ -7,7 +7,11 @@
 <div class="container">
   <div class="full-screen-ad">
     <div class="sides advertiser-logo">
-      <img class="center image-size" src={advertiser.logoLight} />
+      <img
+        class="center image-size"
+        src={advertiser.logoLight}
+        alt={advertiser.name}
+      />
     </div>
     <div class="sides advertiser-info">
       <p class="title-text">{advertiser.name}</p>

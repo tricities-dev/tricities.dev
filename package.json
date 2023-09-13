@@ -35,7 +35,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"svelte-qrcode": "^1.0.0",
 		"svelte-qrcode-image": "^1.0.0-rc.2"
 	}
 }
