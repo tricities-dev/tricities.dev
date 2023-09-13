@@ -17,8 +17,6 @@
   # Default build command.
   command = "npm run build"
 
-[[plugins]]
-
 # Production context: all deploys from the Production branch
 # set in your site’s Branches settings in the UI will inherit
 # these settings. You can define environment variables
