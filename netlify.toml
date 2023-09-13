@@ -17,7 +17,7 @@
   # Default build command.
   command = "npm run build"
   [build.environment]
-  NODE_VERSION = "16.17.1"
+    NODE_VERSION = "16.17.1"
 
 [[plugins]]
   # Installs the Lighthouse Build Plugin for all deploy contexts
