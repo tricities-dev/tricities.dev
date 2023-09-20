@@ -1,4 +1,4 @@
-# TriDev Website Base Init w/ Typescript
+# The [tricities.dev](https://tricities.dev) website
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5ed32b41-84a9-4b10-8205-ddecaab3182c/deploy-status)](https://app.netlify.com/sites/tricitiesdev/deploys)
 
