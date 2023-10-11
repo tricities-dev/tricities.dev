@@ -1,25 +1,18 @@
 <script lang="ts">
 	import Hero from "../components/ui/Hero.svelte";
 	import FeedContainer from "../components/ui/FeedContainer.svelte";
-	import { onMount } from "svelte";
-
-	onMount(async () => {
-		const response = await fetch('https://meetup-scrapper.mackenly.workers.dev/api/tridev/latest');
-		const latest = await response.json()
-
-		console.log(latest)
-	})
 </script>
 
+<!-- full page div making the whole screen dark mode -->
 <main>
 	<Hero />
 	<div class="content">
 		<section>
-			<FeedContainer title="Member Feed" zIndex={0}/>
+			<FeedContainer title="Member Feed" />
 		</section>
 		<aside>
-			<FeedContainer title="On Discord" zIndex={1}/>
-			<FeedContainer title="Sponsors" zIndex={0}/>
+			<FeedContainer title="On Discord" />
+			<FeedContainer title="Sponsors" />
 		</aside>
 	</div>
 </main>
@@ -55,12 +48,8 @@ section {
 }
 
 aside {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-	gap: 1rem;
 	min-width: 25rem;
 	max-width: 35rem;
+	background-color: green;
 }
 </style>

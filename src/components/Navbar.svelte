@@ -3,44 +3,44 @@
 	import { Hamburger } from 'svelte-hamburgers';
 	import Logo from "../components/logo.svelte";
 
-	let theme:string = $themeStore;
 	let open:boolean;
 
 	let y:number;
-
-	function getColor() {
-		switch (theme) {
-			case 'light':
-				return 'black'
-			case 'dark':
-				return 'white'
-			default:
-				return 'white'
-		}
-	}
 </script>
 
-<div class="nav"
+<div class="header"
 	class:glass={y > 0}
 >
-	<Logo width={175} height={55}/>
-	<Hamburger bind:open --color={ getColor() }/>
+	<div class="nav">
+		<Logo width={175} height={55}/>
+		<Hamburger bind:open --color={ $themeStore === 'light' ? 'black' : 'white' }/>
+	</div>
 </div>
 
 <svelte:window bind:scrollY={y} />
 
 <style>
-.nav {
+.header {
 	position: fixed;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 6rem;
+	transition: ease-in-out .3s;
+	z-index: 100;
+}
+
+.nav {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: space-between;
 	align-items: center;
-	width: 100%;
-	height: 6rem;
-	padding-inline: 6rem;
-	transition: ease-in-out .3s;
+	width: calc(100% - 12rem);
+	height: 100%;
 }
 
 .glass {

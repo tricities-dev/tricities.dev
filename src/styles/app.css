@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
+
+@font-face {
+	font-family: 'Gotham';
+	font-style: bold;
+	src: url('/fonts/Gotham/GothamBold_Regular.otf');
+}
+
 :root {
 	--black: #0F0F0F;
 	--charcoal: #17171A;
@@ -6,8 +14,11 @@
 	--white: #EFEFEF;
 	--gold: #EEBE41;
 
-	--whiteGlass: rgba(255, 255, 255, 0.39);
-	--blackGlass: rgba(0, 0, 0, 0.39);
+	--whiteGlass: rgba(255, 255, 255, 0.75);
+	--blackGlass: rgba(0, 0, 0, 0.75);
+
+	--header-font-family: 'Gotham', sans-serif;
+	--body-font-family: 'Inter', sans-serif;
 }
 
 [data-theme='light'] {
@@ -15,10 +26,13 @@
 	--primary-text-color: var(--black);
 	--cta-btn-bg: var(--gold);
 	--cta-btn-fg: var(--black);
-	--header-gradient: linear-gradient(to right, var(--gray) 0%, var(--grayDark) 100%);
+	--header-gradient: linear-gradient(to right, var(--white) 0%, var(--gray) 100%);
 	--header-text-color: var(--charcoal);
+	--gradient-bg-vert: linear-gradient(to bottom, var(--gray) 0%, var(--white) 100%);
 	--glass-bg: var(--whiteGlass);
 	--filter-invert: invert(0);
+	--triforce-opacity: 0.25;
+	--border-color: var(--gray);
 }
 
 [data-theme='dark'] {
@@ -28,12 +42,25 @@
 	--cta-btn-fg: var(--black);
 	--header-gradient: linear-gradient(to right, var(--grayDark) 0%, var(--charcoal) 100%);
 	--header-text-color: var(--gray);
+	--gradient-bg-vert: linear-gradient(to bottom, var(--charcoal) 0%, var(--black) 100%);
 	--glass-bg: var(--blackGlass);
 	--filter-invert: invert(1);
+	--triforce-opacity: 0.05;
+	--border-color: var(--charcoal);
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: content-box;
+}
+html, body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--primary-bg-color);
+}
+
+body {
+	width: 100svw;
+	min-height: 100svh;
 }
