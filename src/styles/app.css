@@ -11,8 +11,11 @@
 	--charcoal: #17171A;
 	--grayDark: #262626;
 	--gray: #989898;
+	--grayLight: #E8E8E8;
 	--white: #EFEFEF;
 	--gold: #EEBE41;
+	--slate: #2C6483;
+	--cream: #F3EAD9;
 
 	--whiteGlass: rgba(255, 255, 255, 0.75);
 	--blackGlass: rgba(0, 0, 0, 0.75);
@@ -21,22 +24,24 @@
 	--header-font-family: 'Gotham', sans-serif;
 	--body-font-family: 'Inter', sans-serif;
 
+	--btn-shadow:
+
 	--calc-width: calc(100% - 12rem);
 }
 
 [data-theme='light'] {
-	--primary-bg-color: var(--white);
-	--primary-text-color: var(--black);
-	--cta-btn-bg: var(--gold);
-	--cta-btn-fg: var(--black);
-	--cta-btn-hover-bg: #D6AB3A;
-	--header-gradient: linear-gradient(to right, var(--white) 0%, var(--gray) 100%);
-	--header-text-color: var(--charcoal);
-	--gradient-bg-vert: linear-gradient(to bottom, var(--gray) 0%, var(--white) 100%);
+	--primary-bg-color: #fff;
+	--primary-text-color: #394e6a;
+	--cta-btn-bg: var(--slate);
+	--cta-btn-fg: var(--cream);
+	--cta-btn-hover-bg: #046DE5;
+	--header-gradient: linear-gradient(to right, var(--white) 0%, var(--grayLight) 100%);
+	--header-text-color: #394e6a;
+	--gradient-bg-vert: linear-gradient(to bottom, var(--grayLight) 0%, var(--grayLight) 100%);
 	--glass-bg: var(--whiteGlass);
 	--filter-invert: invert(0);
-	--triforce-opacity: 0.25;
-	--border-color: var(--gray);
+	--triforce-opacity: 0.05;
+	--triforce-invert: invert(1);
 }
 
 [data-theme='dark'] {

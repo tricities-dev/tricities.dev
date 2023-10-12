@@ -12,7 +12,7 @@
 	class:glass={y > 0}
 >
 	<div class="nav">
-		<Logo width={175} height={55}/>
+		<Logo width={175} height={55} dark={ $themeStore === 'dark' ? true : false }/>
 		<Hamburger bind:open --color={ $themeStore === 'light' || $themeStore === 'exp' ? 'black' : 'white' }/>
 	</div>
 </div>
