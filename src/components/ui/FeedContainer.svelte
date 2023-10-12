@@ -20,7 +20,7 @@
 	justify-content: flex-start;
 	align-items: flex-start;
 	width: 100%;
-	height: 30rem;
+	height: auto;
 	background: var(--gradient-bg-vert);
 	border: 2px solid var(--border-color);
 	border-radius: 10px 0 0 0;

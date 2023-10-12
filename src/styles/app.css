@@ -16,9 +16,12 @@
 
 	--whiteGlass: rgba(255, 255, 255, 0.75);
 	--blackGlass: rgba(0, 0, 0, 0.75);
+	--expGlass: rgba(204,225,249, 0.75);
 
 	--header-font-family: 'Gotham', sans-serif;
 	--body-font-family: 'Inter', sans-serif;
+
+	--calc-width: calc(100% - 12rem);
 }
 
 [data-theme='light'] {
@@ -26,6 +29,7 @@
 	--primary-text-color: var(--black);
 	--cta-btn-bg: var(--gold);
 	--cta-btn-fg: var(--black);
+	--cta-btn-hover-bg: #D6AB3A;
 	--header-gradient: linear-gradient(to right, var(--white) 0%, var(--gray) 100%);
 	--header-text-color: var(--charcoal);
 	--gradient-bg-vert: linear-gradient(to bottom, var(--gray) 0%, var(--white) 100%);
@@ -40,6 +44,7 @@
 	--primary-text-color: var(--white);
 	--cta-btn-bg: var(--gold);
 	--cta-btn-fg: var(--black);
+	--cta-btn-hover-bg: #D6AB3A;
 	--header-gradient: linear-gradient(to right, var(--grayDark) 0%, var(--charcoal) 100%);
 	--header-text-color: var(--gray);
 	--gradient-bg-vert: linear-gradient(to bottom, var(--charcoal) 0%, var(--black) 100%);
@@ -54,10 +59,11 @@
 	--primary-text-color: #394e6a;
 	--cta-btn-bg: #057Aff;
 	--cta-btn-fg: #dbe1ff;
+	--cta-btn-hover-bg: #046DE5;
 	--header-gradient: linear-gradient(to right, #fff 0%, #f0f6ff 100%);
 	--header-text-color: #394e6a;
 	--gradient-bg-vert: linear-gradient(to bottom, #f0f6ff 0%, #fff 100%);
-	--glass-bg: var(--whiteGlass);
+	--glass-bg: var(--expGlass);
 	--filter-invert: invert(0);
 	--triforce-opacity: 0.75;
 	--border-color: #f0f6ff;

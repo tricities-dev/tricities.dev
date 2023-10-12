@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Hero from "../components/ui/Hero.svelte";
 	import FeedContainer from "../components/ui/FeedContainer.svelte";
+	import MemberFeed from "../components/memberFeed/MemberFeed.svelte";
 	import { onMount } from "svelte";
 
 	// onMount(async () => {
@@ -15,7 +16,9 @@
 	<Hero />
 	<div class="content">
 		<section>
-			<FeedContainer title="Member Feed" zIndex={0}/>
+			<FeedContainer title="Member Feed" zIndex={0}>
+				<MemberFeed />
+			</FeedContainer>
 		</section>
 		<aside>
 			<FeedContainer title="On Discord" zIndex={1}/>
@@ -25,7 +28,7 @@
 </main>
 
 <style>
-main {
+	main {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -36,9 +39,9 @@ main {
 	height: 100%;
 	padding-top: 7rem;
 	background-color: var(--primary-bg-color);
-}
+	}
 
-.content {
+	.content {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -48,13 +51,13 @@ main {
 	width: calc(100% - 12rem);
 	height: auto;
 	z-index: 0;
-}
+	}
 
-section {
+	section {
 	flex: 1;
-}
+	}
 
-aside {
+	aside {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -62,5 +65,5 @@ aside {
 	gap: 1rem;
 	min-width: 25rem;
 	max-width: 35rem;
-}
+	}
 </style>
