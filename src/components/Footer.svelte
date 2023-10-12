@@ -4,6 +4,7 @@
 	let startSeconds:number;
 	let endSeconds:number;
 	let dur:number;
+	let altTheme:boolean = false;
 
 	function updateTheme() {
 		let newTheme:string = $themeStore === 'light' ? 'dark' : 'light';
@@ -18,8 +19,10 @@
 			dur = endSeconds - startSeconds;
 			if (dur >= 1.5) {
 				$themeStore = 'exp'
+				altTheme = true
 			} else {
 				updateTheme()
+				altTheme = false
 			}
 		}
 	}
@@ -30,7 +33,12 @@
 		<p class="site-note">
 			Tri-Cities Dev, non-profit CC0 on <a href="https://github.com/tricities-dev">Github</a>
 		</p>
-		<img src="./lightbulb.svg" alt="lightbulb used to toggle theme" on:mousedown={watchForLongPress}/>
+		<img
+			class:altTheme={altTheme}
+			src="./lightbulb.svg"
+			alt="lightbulb used to toggle theme"
+			on:mousedown={watchForLongPress}
+		/>
 	</div>
 </footer>
 
@@ -75,4 +83,9 @@ footer {
 	transform: rotate(15deg);
 	transition: ease-in-out .15s;
 }
+
+.altTheme {
+	transform: rotate(-180deg);
+	transition: ease-in-out .15s;
+	}
 </style>

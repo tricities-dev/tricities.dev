@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 
-  export let title: string;
-  export let link: string;
+	export let title: string;
+	export let link: string;
 	export let icon: any = null;
 
 	let iconName:string;
@@ -20,15 +20,15 @@
 	}
 </script>
 
-<a href={link} class="cta-button">
+<a href={link} class="cta-button" target="_blank">
 	{#if icon}
 		<Icon icon={ iconName } width={24} height={24}/>
 	{/if}
-  {title}
+	{title}
 </a>
 
 <style>
-.cta-button {
+	.cta-button {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -43,9 +43,9 @@
 	text-decoration: none;
 	border-radius: 10px;
 	transition: background-color 0.3s ease;
-}
+	}
 
-.cta-button:hover {
-	background-color: #0056b3; /* Set your desired hover background color */
-}
+	.cta-button:hover {
+	background-color: var(--cta-btn-hover-bg);
+	}
 </style>
