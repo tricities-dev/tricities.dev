@@ -24,7 +24,7 @@
 		"eslint-plugin-import": "^2.26.0",
 		"eslint-plugin-n": "^15.3.0",
 		"eslint-plugin-promise": "^6.0.1",
-		"netlify-cli": "^2.71.0",
+		"netlify-cli": "^16.3.2",
 		"sass": "^1.55.0",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.7.1",
