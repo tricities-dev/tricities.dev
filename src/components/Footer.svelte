@@ -1,9 +1,27 @@
 <script lang="ts">
 	import { themeStore } from '../stores.js';
 
+	let startSeconds:number;
+	let endSeconds:number;
+	let dur:number;
+
 	function updateTheme() {
 		let newTheme:string = $themeStore === 'light' ? 'dark' : 'light';
 		$themeStore = newTheme;
+	}
+
+	function watchForLongPress(e:any) {
+		startSeconds = new Date().getTime() / 1000;
+
+		e.target.onmouseup = () => {
+			endSeconds = new Date().getTime() / 1000;
+			dur = endSeconds - startSeconds;
+			if (dur >= 1.5) {
+				$themeStore = 'exp'
+			} else {
+				updateTheme()
+			}
+		}
 	}
 </script>
 
@@ -12,7 +30,7 @@
 		<p class="site-note">
 			Tri-Cities Dev, non-profit CC0 on <a href="https://github.com/tricities-dev">Github</a>
 		</p>
-		<img src="./lightbulb.svg" alt="lightbulb used to toggle theme" on:click={updateTheme}/>
+		<img src="./lightbulb.svg" alt="lightbulb used to toggle theme" on:mousedown={watchForLongPress}/>
 	</div>
 </footer>
 

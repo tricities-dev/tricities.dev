@@ -13,7 +13,7 @@
 >
 	<div class="nav">
 		<Logo width={175} height={55}/>
-		<Hamburger bind:open --color={ $themeStore === 'light' ? 'black' : 'white' }/>
+		<Hamburger bind:open --color={ $themeStore === 'light' || $themeStore === 'exp' ? 'black' : 'white' }/>
 	</div>
 </div>
 

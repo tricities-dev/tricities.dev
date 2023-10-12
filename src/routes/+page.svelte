@@ -3,12 +3,12 @@
 	import FeedContainer from "../components/ui/FeedContainer.svelte";
 	import { onMount } from "svelte";
 
-	onMount(async () => {
-		const response = await fetch('https://meetup-scrapper.mackenly.workers.dev/api/tridev/latest');
-		const latest = await response.json()
-
-		console.log(latest)
-	})
+	// onMount(async () => {
+	// 	const response = await fetch('https://meetup-scrapper.mackenly.workers.dev/api/tridev/latest');
+	// 	const latest = await response.json()
+	//
+	// 	console.log(latest)
+	// })
 </script>
 
 <main>
