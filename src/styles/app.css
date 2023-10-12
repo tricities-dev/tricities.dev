@@ -49,6 +49,20 @@
 	--border-color: var(--charcoal);
 }
 
+[data-theme='exp'] {
+	--primary-bg-color: #fff;
+	--primary-text-color: #394e6a;
+	--cta-btn-bg: #057Aff;
+	--cta-btn-fg: #dbe1ff;
+	--header-gradient: linear-gradient(to right, #fff 0%, #f0f6ff 100%);
+	--header-text-color: #394e6a;
+	--gradient-bg-vert: linear-gradient(to bottom, #f0f6ff 0%, #fff 100%);
+	--glass-bg: var(--whiteGlass);
+	--filter-invert: invert(0);
+	--triforce-opacity: 0.75;
+	--border-color: #f0f6ff;
+}
+
 * {
 	margin: 0;
 	padding: 0;
