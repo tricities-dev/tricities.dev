@@ -4,20 +4,20 @@
 
 	let title = '', description = '', date = new Date(), link = '';
 
-    onMount(async () => {
-        const res = await fetch('https://meetup-scrapper.mackenly.workers.dev/api/tridev/latest', {
+	onMount(async () => {
+		const res = await fetch('https://meetup-scrapper.mackenly.workers.dev/api/tridev/latest', {
 			headers: {
 				'Content-Type': 'application/json',
 				'Access-Control-Allow-Origin': '*',
 			},
 		});
-        const data = await res.json();
-        title = data.title;
-        description = data.description;
+		const data = await res.json();
+		title = data.title;
+		description = data.description;
 		date = new Date(data.date);
 		console.log(data.date);
 		link = data.link;
-    });
+	});
 </script>
 
 <div class="hero">
@@ -32,7 +32,18 @@
 				{description}
 			</p>
 			<p class="hero-content-date">
-				{date.toLocaleDateString('en-US', { timeZone: 'America/New_York', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true })}
+				{
+					date.toLocaleDateString('en-US', {
+						timeZone: 'America/New_York',
+						weekday: 'long',
+						year: 'numeric',
+						month: 'long',
+						day: 'numeric',
+						hour: 'numeric',
+						minute: 'numeric',
+						hour12: true
+					})
+				}
 				{' '} at <a href="https://maps.app.goo.gl/PgLg6EsQCxe9hAn4A" target="_blank">Spark Plaza</a>
 			</p>
 			<CtaLink title="RSVP" link="{link}" icon="meetup"/>
@@ -42,7 +53,7 @@
 </div>
 
 <style>
-.hero {
+	.hero {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -51,9 +62,9 @@
 	width: 100%;
 	height: 34.25rem;
 	z-index: 1;
-}
+	}
 
-.hero-body {
+	.hero-body {
 	position: relative;
 	display: flex;
 	flex-direction: row;
@@ -65,38 +76,41 @@
 	height: 34.25rem;
 	background: var(--gradient-bg-vert);
 	border: 2px solid var(--border-color);
-}
+	border-radius: 10px;
+	}
 
-.hero-bg-img {
+	.hero-bg-img {
 	position: absolute;
 	opacity: var(--triforce-opacity);
 	width: 100%;
 	height: 100%;
 	background-image: url('./triforce.svg');
-  background-repeat: no-repeat;
-  background-position: right center;
-}
+	background-repeat: no-repeat;
+	background-position: right center;
+	filter: var(--triforce-invert);
+	}
 
-.hero-body::after {
-  content: "";
-  position: absolute;
+	.hero-body::after {
+	content: "";
+	position: absolute;
 	right: -56px;
 	top: -56px;
-  width: 100px;
-  height: 100px;
-  transform: rotate(45deg);
-  background-color: var(--primary-bg-color);
+	width: 100px;
+	height: 100px;
+	transform: rotate(45deg);
+	background-color: var(--primary-bg-color);
 	border: 4px solid var(--primary-bg-color);
-}
+	}
 
-.hero-img {
+	.hero-img {
 	width: 32rem;
 	height: 32rem;
 	background-color: var(--gray);
 	z-index: 1;
-}
+	border-radius: 10px 0 0 0;
+	}
 
-.hero-content {
+	.hero-content {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -107,26 +121,26 @@
 	height: 32rem;
 	padding: 0 5rem 0 5rem;
 	z-index: 1;
-}
+	}
 
-.hero-content-title {
+	.hero-content-title {
 	font-family: var(--header-font-family);
 	font-size: 3rem;
 	color: var(--primary-text-color);
-}
+	}
 
-.hero-content-date {
+	.hero-content-date {
 	font-family: var(--body-font-family);
 	color: var(--primary-text-color);
-}
+	}
 
-.hero-content-date a {
+	.hero-content-date a {
 	color: var(--cta-btn-bg);
-}
+	}
 
-.hero-content-description {
+	.hero-content-description {
 	font-family: var(--body-font-family);
 	color: var(--primary-text-color);
 	line-height: 1.6rem;
-}
+	}
 </style>
