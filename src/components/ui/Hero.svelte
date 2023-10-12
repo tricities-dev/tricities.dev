@@ -1,5 +1,23 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import CtaLink from "./CtaLink.svelte";
+
+	let title = '', description = '', date = new Date(), link = '';
+
+    onMount(async () => {
+        const res = await fetch('https://meetup-scrapper.mackenly.workers.dev/api/tridev/latest', {
+			headers: {
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+			},
+		});
+        const data = await res.json();
+        title = data.title;
+        description = data.description;
+		date = new Date(data.date);
+		console.log(data.date);
+		link = data.link;
+    });
 </script>
 
 <div class="hero">
@@ -8,12 +26,16 @@
 		</div>
 		<div class="hero-content">
 			<h2 class="hero-content-title">
-				Eyetracking, using a Tobii Eyetracker, C#/.NET, Blazor, SignalR
+				{title}
 			</h2>
 			<p class="hero-content-description">
-				A local startup in JC uses Eyetracking technology to power mental health evaluation software. For the last 2 years I've been modernizing their software stack piece by piece. For this latest project, the interface to the eyetracker itself, I've chosen C# and .NET for my implementation. Take a deep dive into the .NET platform with me as I talk about the project, how things are going so far, and what I've learned about.
+				{description}
 			</p>
-			<CtaLink title="RSVP" link="#" icon="meetup"/>
+			<p class="hero-content-date">
+				{date.toLocaleDateString('en-US', { timeZone: 'America/New_York', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true })}
+				{' '} at <a href="https://maps.app.goo.gl/PgLg6EsQCxe9hAn4A" target="_blank">Spark Plaza</a>
+			</p>
+			<CtaLink title="RSVP" link="{link}" icon="meetup"/>
 		</div>
 		<div class="hero-bg-img"></div>
 	</div>
@@ -91,6 +113,15 @@
 	font-family: var(--header-font-family);
 	font-size: 3rem;
 	color: var(--primary-text-color);
+}
+
+.hero-content-date {
+	font-family: var(--body-font-family);
+	color: var(--primary-text-color);
+}
+
+.hero-content-date a {
+	color: var(--cta-btn-bg);
 }
 
 .hero-content-description {
