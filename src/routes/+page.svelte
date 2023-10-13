@@ -29,9 +29,10 @@
 
 <style>
 	main {
+	flex: 1;
 	display: flex;
 	flex-direction: column;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: center;
 	gap: 2rem;
@@ -42,19 +43,25 @@
 	}
 
 	.content {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: flex-start;
 	gap: 2rem;
-	width: calc(100% - 12rem);
+	width: 100%;
 	height: auto;
 	z-index: 0;
 	}
 
 	section {
 	flex: 1;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
 	}
 
 	aside {
@@ -63,7 +70,21 @@
 	justify-content: flex-start;
 	align-items: center;
 	gap: 1rem;
-	min-width: 25rem;
-	max-width: 35rem;
+	width: 25rem;
+	}
+
+	@media only screen and (max-width: 430px) {
+		.content {
+			margin-top: 10rem;
+		}
+		section {
+			width: 100%;
+			height: auto;
+		}
+
+		aside {
+			width: 100%;
+			height: auto;
+		}
 	}
 </style>
