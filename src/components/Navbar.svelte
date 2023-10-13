@@ -40,6 +40,12 @@
 	-webkit-backdrop-filter: blur(9.5px);
 	transition: ease-in-out .3s;
 }
+@media only screen and (max-width: 1366px) {
+  .nav {
+	padding-inline: 4rem;
+	}
+}
+
 @media only screen and (max-width: 430px) {
   .nav {
 	padding-inline: 1.5rem;

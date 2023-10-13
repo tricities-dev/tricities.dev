@@ -132,20 +132,38 @@
 	line-height: 1.6rem;
 	}
 
+	@media only screen and (max-width: 1366px) {
+		.hero {
+			gap: 1rem;
+		}
+
+		.hero-content {
+			padding: 0rem 1.5rem 0 1.5rem;
+		}
+
+		.hero::after {
+			right: -51px;
+			top: -36px;
+			width: 95px;
+			height: 75px;
+		}
+	}
+
 	@media only screen and (max-width: 430px) {
 	.hero {
-	height: auto;
-	padding: 0rem;
-	border: none;
-	z-index: 0;
+		gap: 2rem;
+		height: auto;
+		padding: 0rem;
+		border: none;
+		z-index: 0;
 	}
 
 	.hero-bg-img {
-	background-image: none;
+		background-image: none;
 	}
 
 	.hero::after {
-	display: none;
+		display: none;
 	}
 
 	.hero-img {
@@ -154,8 +172,9 @@
 		aspect-ratio: 1/1;
 		border-radius: 0;
 	}
+
 	.hero-content {
-	padding: 10rem 1rem 0 1rem;
+		padding: 10rem 1rem 0 1rem;
 	}
-	}
+}
 </style>
