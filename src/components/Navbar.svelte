@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { themeStore } from "../stores";
+	import { themeStore, menuStore } from "../stores";
 	import { Hamburger } from 'svelte-hamburgers';
+	import Menu from "./Menu.svelte";
 	import Logo from "../components/logo.svelte";
 
-	let open:boolean;
-
+	let open:boolean = $menuStore;
 	let y:number;
 </script>
 
 <div class="nav"
-	class:glass={y > 0}
+	class:glass={y > 0 || $menuStore}
 >
 	<Logo width={175} height={55} dark={ $themeStore === 'dark' ? true : false }/>
-	<Hamburger bind:open --color={ $themeStore === 'light' || $themeStore === 'exp' ? 'black' : 'white' }/>
+	<Hamburger bind:open={$menuStore} --color={ $themeStore === 'light' || $themeStore === 'exp' ? 'black' : 'white' }/>
 </div>
 
 <svelte:window bind:scrollY={y} />
@@ -26,7 +26,7 @@
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	height: 7rem;
+	height: var(--nav-height);
 	top: 0;
 	padding-inline: 12rem;
 	z-index: 100;
@@ -48,7 +48,7 @@
 
 @media only screen and (max-width: 430px) {
   .nav {
-	padding-inline: 1.5rem;
+		padding-inline: 1.5rem;
 	}
 }
 </style>
