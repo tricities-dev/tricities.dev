@@ -1,9 +1,10 @@
 <script lang="ts">
 	export let title: string;
+	export let id: string;
 	export let zIndex: number = 0;
 </script>
 
-<div class="feed-container" style="z-index: {zIndex};">
+<div class="feed-container" id={id} style="z-index: {zIndex};">
 	<div class="feed-header">
 		<h2 class="feed-title">{ title }</h2>
 	</div>

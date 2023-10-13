@@ -6,6 +6,7 @@ const isLocalStorageAvailable = typeof localStorage !== 'undefined';
 const currentTheme =  isLocalStorageAvailable ? localStorage.getItem('currentTheme') || 'dark' : 'dark';
 
 const themeStore = writable(currentTheme);
+const menuStore = writable(false);
 
 
 // Subscribe to changes and save to local storage if available
@@ -15,4 +16,4 @@ if (isLocalStorageAvailable) {
   });
 }
 
-export { themeStore };
+export { themeStore, menuStore };

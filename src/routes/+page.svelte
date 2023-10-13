@@ -16,13 +16,13 @@
 	<Hero />
 	<div class="content">
 		<section>
-			<FeedContainer title="Member Feed" zIndex={0}>
+			<FeedContainer title="Member Feed" id="member-feed" zIndex={0}>
 				<MemberFeed />
 			</FeedContainer>
 		</section>
 		<aside>
-			<FeedContainer title="On Discord" zIndex={1}/>
-			<FeedContainer title="Sponsors" zIndex={0}/>
+			<FeedContainer title="On Discord" id="on-discord" zIndex={1}/>
+			<FeedContainer title="Sponsors" id="sponsors" zIndex={0}/>
 		</aside>
 	</div>
 </main>
