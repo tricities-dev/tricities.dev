@@ -50,7 +50,7 @@ footer {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 4rem;
+	height: 8rem;
 	padding: 2rem 0;
 	background-color: var(--primary-bg-color);
 }

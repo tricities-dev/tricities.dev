@@ -31,5 +31,13 @@
 	align-items: center;
 	width: 100%;
 	height: 100%;
+	padding: 0 12rem 0 12rem;
+	background-color: var(--primary-bg-color);
+}
+
+@media only screen and (max-width: 430px) {
+  .page-content {
+	padding: 0;
+	}
 }
 </style>

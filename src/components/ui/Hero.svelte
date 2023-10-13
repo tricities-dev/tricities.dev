@@ -21,50 +21,37 @@
 </script>
 
 <div class="hero">
-	<div class="hero-body">
-		<div class="hero-img">
-		</div>
-		<div class="hero-content">
-			<h2 class="hero-content-title">
-				{title}
-			</h2>
-			<p class="hero-content-description">
-				{description}
-			</p>
-			<p class="hero-content-date">
-				{
-					date.toLocaleDateString('en-US', {
-						timeZone: 'America/New_York',
-						weekday: 'long',
-						year: 'numeric',
-						month: 'long',
-						day: 'numeric',
-						hour: 'numeric',
-						minute: 'numeric',
-						hour12: true
-					})
-				}
-				{' '} at <a href="https://maps.app.goo.gl/PgLg6EsQCxe9hAn4A" target="_blank">Spark Plaza</a>
-			</p>
-			<CtaLink title="RSVP" link="{link}" icon="meetup"/>
-		</div>
-		<div class="hero-bg-img"></div>
+	<div class="hero-img">
 	</div>
+	<div class="hero-content">
+		<h2 class="hero-content-title">
+			{title}
+		</h2>
+		<p class="hero-content-description">
+			{description}
+		</p>
+		<p class="hero-content-date">
+			{
+				date.toLocaleDateString('en-US', {
+					timeZone: 'America/New_York',
+					weekday: 'long',
+					year: 'numeric',
+					month: 'long',
+					day: 'numeric',
+					hour: 'numeric',
+					minute: 'numeric',
+					hour12: true
+				})
+			}
+			{' '} at <a href="https://maps.app.goo.gl/PgLg6EsQCxe9hAn4A" target="_blank">Spark Plaza</a>
+		</p>
+		<CtaLink title="RSVP" link="{link}" icon="meetup"/>
+	</div>
+	<div class="hero-bg-img"></div>
 </div>
 
 <style>
 	.hero {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: flex-start;
-	width: 100%;
-	height: 34.25rem;
-	z-index: 1;
-	}
-
-	.hero-body {
 	position: relative;
 	display: flex;
 	flex-direction: row;
@@ -72,11 +59,12 @@
 	justify-content: center;
 	align-items: flex-start;
 	gap: 2rem;
-	width: calc(100% - 12rem);
+	width: 100%;
 	height: 34.25rem;
 	background: var(--gradient-bg-vert);
 	border: 2px solid var(--border-color);
 	border-radius: 10px;
+	z-index: 1;
 	}
 
 	.hero-bg-img {
@@ -90,7 +78,7 @@
 	filter: var(--triforce-invert);
 	}
 
-	.hero-body::after {
+	.hero::after {
 	content: "";
 	position: absolute;
 	right: -56px;
@@ -142,5 +130,32 @@
 	font-family: var(--body-font-family);
 	color: var(--primary-text-color);
 	line-height: 1.6rem;
+	}
+
+	@media only screen and (max-width: 430px) {
+	.hero {
+	height: auto;
+	padding: 0rem;
+	border: none;
+	z-index: 0;
+	}
+
+	.hero-bg-img {
+	background-image: none;
+	}
+
+	.hero::after {
+	display: none;
+	}
+
+	.hero-img {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1/1;
+		border-radius: 0;
+	}
+	.hero-content {
+	padding: 10rem 1rem 0 1rem;
+	}
 	}
 </style>

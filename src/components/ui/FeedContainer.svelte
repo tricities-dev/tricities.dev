@@ -17,6 +17,7 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: flex-start;
 	width: 100%;
@@ -55,5 +56,17 @@
 	font-size: 2rem;
 	color: var(--header-text-color);
 	padding-left: 3rem;
+}
+
+.feed-content {
+	width: 100%;
+	}
+@media only screen and (max-width: 430px) {
+	.feed-header {
+		border-radius: 0;
+	}
+	.feed-container::after {
+	display: none;
+	}
 }
 </style>

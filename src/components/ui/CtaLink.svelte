@@ -43,6 +43,7 @@
 	text-decoration: none;
 	border-radius: 10px;
 	transition: background-color 0.3s ease;
+	filter: var(--btn-shadow);
 	}
 
 	.cta-button:hover {

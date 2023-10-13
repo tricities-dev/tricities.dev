@@ -49,4 +49,9 @@
 	height: auto;
 	padding: 2rem 0;
 	}
+	@media only screen and (max-width: 430px) {
+		.member-feed {
+			padding: 0;
+		}
+	}
 </style>
