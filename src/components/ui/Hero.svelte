@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import CtaLink from "./CtaLink.svelte";
 
-	let title = '', description = '', date = new Date(), link = '';
+	let name = '', description = '', date = new Date(), href = '';
 
 	onMount(async () => {
 		const res = await fetch('https://meetup-scrapper.mackenly.workers.dev/api/tridev/latest', {
@@ -12,11 +12,11 @@
 			},
 		});
 		const data = await res.json();
-		title = data.title;
+		name = data.name;
 		description = data.description;
 		date = new Date(data.date);
 		console.log(data.date);
-		link = data.link;
+		href = data.href;
 	});
 </script>
 
@@ -24,8 +24,8 @@
 	<div class="hero-img">
 	</div>
 	<div class="hero-content">
-		<h2 class="hero-content-title">
-			{title}
+		<h2 class="hero-content-event-name">
+			{name}
 		</h2>
 		<p class="hero-content-description">
 			{description}
@@ -45,7 +45,7 @@
 			}
 			{' '} at <a href="https://maps.app.goo.gl/PgLg6EsQCxe9hAn4A" target="_blank">Spark Plaza</a>
 		</p>
-		<CtaLink title="RSVP" link="{link}" icon="meetup"/>
+		<CtaLink title="RSVP" link="{href}" icon="meetup"/>
 	</div>
 	<div class="hero-bg-img"></div>
 </div>
@@ -111,7 +111,7 @@
 	z-index: 1;
 	}
 
-	.hero-content-title {
+	.hero-content-event-name {
 	font-family: var(--header-font-family);
 	font-size: 3rem;
 	color: var(--primary-text-color);
