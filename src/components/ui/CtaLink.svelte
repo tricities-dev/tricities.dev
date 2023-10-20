@@ -28,7 +28,7 @@
 </a>
 
 <style>
-	.cta-button {
+.cta-button {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -44,9 +44,9 @@
 	border-radius: 10px;
 	transition: background-color 0.3s ease;
 	filter: var(--btn-shadow);
-	}
+}
 
-	.cta-button:hover {
+.cta-button:hover {
 	background-color: var(--cta-btn-hover-bg);
-	}
+}
 </style>
