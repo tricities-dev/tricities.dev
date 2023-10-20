@@ -36,7 +36,7 @@
 	/* From https://css.glass */
 	background: var(--glass-bg);
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-	backdrop-filter: blur(9.5px);
+	backdrop-filter: blur(15px);
 	-webkit-backdrop-filter: blur(9.5px);
 	transition: ease-in-out .3s;
 }
