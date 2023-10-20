@@ -29,14 +29,14 @@
 }
 
 .feed-container::after {
-  content: "";
-  position: absolute;
+	content: "";
+	position: absolute;
 	right: -40px;
 	top: -40px;
-  width: 70px;
-  height: 70px;
-  transform: rotate(45deg);
-  background-color: var(--primary-bg-color);
+	width: 70px;
+	height: 70px;
+	transform: rotate(45deg);
+	background-color: var(--primary-bg-color);
 	border: 4px solid var(--primary-bg-color);
 }
 
@@ -61,13 +61,13 @@
 
 .feed-content {
 	width: 100%;
-	}
+}
 @media only screen and (max-width: 430px) {
 	.feed-header {
 		border-radius: 0;
 	}
 	.feed-container::after {
-	display: none;
+		display: none;
 	}
 }
 </style>

@@ -38,14 +38,14 @@
 }
 
 @media only screen and (max-width: 1366px) {
-  .page-content {
-	padding: 0 4rem;
+	.page-content {
+		padding: 0 4rem;
 	}
 }
 
 @media only screen and (max-width: 430px) {
-  .page-content {
-	padding: 0;
+	.page-content {
+		padding: 0;
 	}
 }
 </style>

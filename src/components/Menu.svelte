@@ -45,7 +45,7 @@
 		flex-wrap: nowrap;
 		justify-content: center;
 		align-items: center;
-	  top: var(--nav-height);
+		top: var(--nav-height);
 		width: 100%;
 		height: auto;
 		font-size: 1.5em;
@@ -61,7 +61,7 @@
 		cursor: pointer;
 		width: max-content;
 		margin: 1rem auto;
-	  text-decoration: none;
+		text-decoration: none;
 		color: var(--primary-text-color);
 	}
 

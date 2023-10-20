@@ -39,16 +39,17 @@
 
 <style>
 	.member-feed {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: center;
-	gap: 3rem;
-	width: 100%;
-	height: auto;
-	padding: 2rem 0;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 3rem;
+		width: 100%;
+		height: auto;
+		padding: 2rem 0;
 	}
+
 	@media only screen and (max-width: 430px) {
 		.member-feed {
 			padding: 0;
