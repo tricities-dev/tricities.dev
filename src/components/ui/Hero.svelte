@@ -105,9 +105,9 @@
 		flex-wrap: nowrap;
 		justify-content: center;
 		align-items: flex-start;
-		gap: 2rem;
+		gap: 1rem;
 		height: 32rem;
-		padding: 0 5rem 0 5rem;
+		padding: 0 5rem 0 4rem;
 		z-index: 1;
 	}
 
@@ -120,6 +120,8 @@
 	.hero-content-date {
 		font-family: var(--body-font-family);
 		color: var(--primary-text-color);
+		font-size: 1.25rem;
+		line-height: 1.6;
 	}
 
 	.hero-content-date a {
@@ -129,7 +131,8 @@
 	.hero-content-description {
 		font-family: var(--body-font-family);
 		color: var(--primary-text-color);
-		line-height: 1.6rem;
+		font-size: 1.25rem;
+		line-height: 1.6;
 	}
 
 	@media only screen and (max-width: 1366px) {
