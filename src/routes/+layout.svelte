@@ -4,7 +4,6 @@
 	// import link from './link.svelte';
 	import { themeStore } from '../stores.js';
 	import Navbar from "../components/Navbar.svelte";
-	import Menu from "../components/Menu.svelte";
 	import Footer from '../components/Footer.svelte';
 
 	onMount(() => {
@@ -19,7 +18,6 @@
 <!-- full page div making the whole screen dark mode -->
 <div class="page-content" data-theme={$themeStore}>
 	<Navbar />
-	<Menu />
 	<slot></slot>
 	<Footer />
 </div>

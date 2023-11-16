@@ -26,7 +26,6 @@
 
 {#if $menuStore}
 	<div class="nav-menu"
-		class:glass={$menuStore}
 		transition:fly={{ y: -15, delay: 0 }}
 	>
 		{#each links as link, i}
@@ -38,14 +37,14 @@
 {/if}
 
 <style>
-	div {
-		position: fixed;
+	.nav-menu {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		flex-wrap: nowrap;
 		justify-content: center;
 		align-items: center;
-		top: var(--nav-height);
+		justify-self: center;
 		width: 100%;
 		height: auto;
 		font-size: 1.5em;
@@ -72,9 +71,9 @@
 	.glass {
 		/* From https://css.glass */
 		background: var(--glass-bg);
-		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-		backdrop-filter: blur(9.5px);
-		-webkit-backdrop-filter: blur(9.5px);
+		box-shadow: 0 40px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(15px);
+		-webkit-backdrop-filter: blur(15px);
 		transition: ease-in-out .5s;
 	}
 </style>
