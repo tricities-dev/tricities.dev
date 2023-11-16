@@ -2,9 +2,10 @@
 	export let title: string;
 	export let id: string;
 	export let zIndex: number = 0;
+	export let className: string;
 </script>
 
-<div class="feed-container" id={id} style="z-index: {zIndex};">
+<div class={className} id={id} style="z-index: {zIndex};">
 	<div class="feed-header">
 		<h2 class="feed-title">{ title }</h2>
 	</div>
@@ -15,6 +16,8 @@
 
 <style>
 .feed-container {
+	--top-end: calc(100% - 4rem);
+
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -26,18 +29,11 @@
 	background: var(--gradient-bg-vert);
 	border: 2px solid var(--border-color);
 	border-radius: 10px 0 0 0;
+	clip-path: polygon(0% 0%, var(--top-end) 0%, 100% 4rem, 100% 100%, 0% 100%);
 }
 
-.feed-container::after {
-	content: "";
-	position: absolute;
-	right: -40px;
-	top: -40px;
-	width: 70px;
-	height: 70px;
-	transform: rotate(45deg);
-	background-color: var(--primary-bg-color);
-	border: 4px solid var(--primary-bg-color);
+.member-feed {
+	clip-path: polygon(0% 0%, var(--top-end) 0%, 100% 4rem, 100% 100%, 0% 100%);
 }
 
 .feed-header {
@@ -65,9 +61,6 @@
 @media only screen and (max-width: 430px) {
 	.feed-header {
 		border-radius: 0;
-	}
-	.feed-container::after {
-		display: none;
 	}
 }
 </style>

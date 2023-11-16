@@ -12,37 +12,30 @@
 	// })
 </script>
 
-<main>
+<main class="full-width content-grid">
 	<Hero />
-	<div class="content">
+	<div class="breakout main-content">
 		<section>
-			<FeedContainer title="Member Feed" id="member-feed" zIndex={0}>
+			<FeedContainer title="Member Feed" id="member-feed" className="feed-container member-feed" zIndex={0}>
 				<MemberFeed />
 			</FeedContainer>
 		</section>
 		<aside>
-			<FeedContainer title="On Discord" id="on-discord" zIndex={1}/>
-			<FeedContainer title="Sponsors" id="sponsors" zIndex={0}/>
+			<FeedContainer title="On Discord" id="on-discord" className="feed-container" zIndex={1}/>
+			<FeedContainer title="Sponsors" id="sponsors" className="feed-container" zIndex={0}/>
 		</aside>
 	</div>
 </main>
 
 <style>
 	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
-		justify-content: flex-start;
-		align-items: center;
-		gap: 2rem;
-		width: 100%;
 		height: 100%;
+		row-gap: 2rem;
 		padding-top: 7rem;
 		background-color: var(--primary-bg-color);
 	}
 
-	.content {
+	.main-content {
 		position: relative;
 		display: flex;
 		flex-direction: row;
@@ -74,9 +67,10 @@
 	}
 
 	@media only screen and (max-width: 430px) {
-		.content {
+		.main-content {
 			margin-top: 10rem;
 		}
+
 		section {
 			width: 100%;
 			height: auto;
