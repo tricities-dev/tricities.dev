@@ -2,7 +2,36 @@
 	import { onMount } from 'svelte';
 	import CtaLink from "./CtaLink.svelte";
 
-	let name = '', description = '', date = new Date(), href = '';
+	let name:string = '';
+	let description:string = '';
+	let shortDescription:string = '';
+	let featuredImage:string = '';
+	let date:Date = new Date();
+	let href:string = '';
+
+	// Length of the description check
+	let descriptionLength:number = 200;
+
+	// TODO: Split into date utils file
+	const dateFormat = (date:Date) => {
+		return date.toLocaleDateString('en-US', {
+			timeZone: 'America/New_York',
+			weekday: 'long',
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric',
+			hour12: true
+		})
+	}
+
+	// TODO: Split into string utils file
+	const buildShortDesc = (description:string, length:number) => {
+		const shortDesc = description.slice(0, length);
+
+		return shortDesc;
+	}
 
 	onMount(async () => {
 		const res = await fetch('https://meetup-scrapper.mackenly.workers.dev/api/tridev/latest', {
@@ -14,35 +43,30 @@
 		const data = await res.json();
 		name = data.name;
 		description = data.description;
+		shortDescription = buildShortDesc(data.description, descriptionLength);
+		featuredImage = data.featuredImage.length ? data.featuredImage : 'https://secure.meetupstatic.com/photos/event/e/0/1/c/clean_503817372.webp';
 		date = new Date(data.date);
-		console.log(data.date);
 		href = data.href;
 	});
 </script>
 
 <div class="hero">
 	<div class="hero-img">
+		<img src={featuredImage} alt="TriDev Meetup Talk" />
 	</div>
 	<div class="hero-content">
 		<h2 class="hero-content-event-name">
 			{name}
 		</h2>
 		<p class="hero-content-description">
-			{description}
+			{#if description.length > descriptionLength }
+				{ shortDescription }...
+			{:else}
+				{ description }
+			{/if}
 		</p>
 		<p class="hero-content-date">
-			{
-				date.toLocaleDateString('en-US', {
-					timeZone: 'America/New_York',
-					weekday: 'long',
-					year: 'numeric',
-					month: 'long',
-					day: 'numeric',
-					hour: 'numeric',
-					minute: 'numeric',
-					hour12: true
-				})
-			}
+			{ dateFormat(date) }
 			{' '} at <a href="https://maps.app.goo.gl/PgLg6EsQCxe9hAn4A" target="_blank">Spark Plaza</a>
 		</p>
 		<CtaLink title="RSVP" link="{href}" icon="meetup"/>
@@ -91,11 +115,21 @@
 	}
 
 	.hero-img {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 		width: 32rem;
 		height: 32rem;
 		background-color: var(--gray);
 		z-index: 1;
 		border-radius: 10px 0 0 0;
+		overflow: hidden;
+	}
+
+	.hero-img > img {
+		height: 32rem;
+		width: auto;
 	}
 
 	.hero-content {
@@ -140,6 +174,14 @@
 			gap: 1rem;
 		}
 
+		.hero-img {
+			width: 24rem;
+			height: 32rem;
+			background-color: var(--gray);
+			z-index: 1;
+			border-radius: 10px 0 0 0;
+		}
+
 		.hero-content {
 			padding: 0rem 1.5rem 0 1.5rem;
 		}
@@ -177,7 +219,7 @@
 	}
 
 	.hero-content {
-		padding: 10rem 1rem 0 1rem;
+		padding: 0 1rem 0 1rem;
 	}
 }
 </style>
