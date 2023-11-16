@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { menuStore } from '../stores';
-	import { fly, scale } from 'svelte/transition';
-	import { quadOut } from 'svelte/easing';
+	import { fly } from 'svelte/transition';
 
 	type Link = {
 		title: string,
@@ -66,14 +65,5 @@
 
 	a:hover {
 		text-decoration: underline;
-	}
-
-	.glass {
-		/* From https://css.glass */
-		background: var(--glass-bg);
-		box-shadow: 0 40px 30px rgba(0, 0, 0, 0.1);
-		backdrop-filter: blur(15px);
-		-webkit-backdrop-filter: blur(15px);
-		transition: ease-in-out .5s;
 	}
 </style>

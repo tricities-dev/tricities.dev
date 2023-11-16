@@ -9,6 +9,7 @@
 
 	type memberPosts = memberPost[]
 
+	// TODO: Build a member RSS feed
 	let memberFeed:memberPosts = [
 		{
 			title: 'Azure Dev: Problem starting the plugin CredentialProvider.Microsoft [Solved]',
