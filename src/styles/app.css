@@ -28,6 +28,9 @@
 
 	--nav-height: 7rem;
 	--calc-width: calc(100% - 12rem);
+
+	--full-width-padding: 12rem;
+	--breakout-width: 6rem;
 }
 
 [data-theme='light'] {
@@ -80,6 +83,7 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -95,8 +99,50 @@ body {
 	height: 100%;
 }
 
+/*
+ * Named CSS Grid Layout
+ * YouTube link: https://www.youtube.com/watch?v=c13gpBrnGEw
+ * Easily set three widths:
+ * - Full-width, Breakout, Content
+ */
+.content-grid {
+  display: grid;
+  grid-template-columns:
+   [full-width-start] 0
+	 [full-width-padding-start] var(--full-width-padding)
+	 [breakout-start] var(--breakout-width)
+   [content-start] 1fr [content-end]
+   var(--breakout-width) [breakout-end]
+	 var(--full-width-padding) [full-width-padding-end]
+   0 [full-width-end];
+  height: 100%;
+}
+
+.content-grid > * {
+  grid-column: content;
+}
+
+.content-grid > .breakout {
+  grid-column: breakout;
+}
+
+.content-grid > .full-width {
+  grid-column: full-width;
+  display: grid;
+  grid-template-columns: inherit;
+}
+
+@media only screen and (max-width: 1366px) {
+	:root {
+		--full-width-padding: 2rem;
+		--breakout-width: 3rem;
+	}
+}
+
 @media only screen and (max-width: 430px) {
 	:root {
 		--calc-width: calc(100% - 2rem);
+		--full-width-padding: .5rem;
+		--breakout-width: 1rem;
 	}
 }

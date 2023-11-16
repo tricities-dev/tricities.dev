@@ -2,6 +2,9 @@
 	import { onMount } from 'svelte';
 	import CtaLink from "./CtaLink.svelte";
 
+	import { dateFormat } from '../../utils/date.utils';
+	import { buildShortDesc } from '../../utils/feed.utils';
+
 	let name:string = '';
 	let description:string = '';
 	let shortDescription:string = '';
@@ -11,27 +14,6 @@
 
 	// Length of the description check
 	let descriptionLength:number = 200;
-
-	// TODO: Split into date utils file
-	const dateFormat = (date:Date) => {
-		return date.toLocaleDateString('en-US', {
-			timeZone: 'America/New_York',
-			weekday: 'long',
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric',
-			hour: 'numeric',
-			minute: 'numeric',
-			hour12: true
-		})
-	}
-
-	// TODO: Split into string utils file
-	const buildShortDesc = (description:string, length:number) => {
-		const shortDesc = description.slice(0, length);
-
-		return shortDesc;
-	}
 
 	onMount(async () => {
 		const res = await fetch('https://meetup-scrapper.mackenly.workers.dev/api/tridev/latest', {
@@ -50,7 +32,7 @@
 	});
 </script>
 
-<div class="hero">
+<div class="breakout hero">
 	<div class="hero-img">
 		<img src={featuredImage} alt="TriDev Meetup Talk" />
 	</div>
@@ -76,6 +58,8 @@
 
 <style>
 	.hero {
+		--top-end-hero: calc(100% - 5rem);
+
 		position: relative;
 		display: flex;
 		flex-direction: row;
@@ -83,12 +67,12 @@
 		justify-content: center;
 		align-items: flex-start;
 		gap: 2rem;
-		width: 100%;
 		height: 34.25rem;
 		background: var(--gradient-bg-vert);
 		border: 2px solid var(--border-color);
 		border-radius: 10px;
 		z-index: 1;
+		clip-path: polygon(0% 0%, var(--top-end-hero) 0%, 100% 5rem, 100% 100%, 0% 100%);
 	}
 
 	.hero-bg-img {
@@ -102,18 +86,6 @@
 		filter: var(--triforce-invert);
 	}
 
-	.hero::after {
-		content: "";
-		position: absolute;
-		right: -56px;
-		top: -56px;
-		width: 100px;
-		height: 100px;
-		transform: rotate(45deg);
-		background-color: var(--primary-bg-color);
-		border: 4px solid var(--primary-bg-color);
-	}
-
 	.hero-img {
 		display: flex;
 		flex-direction: column;
@@ -123,7 +95,7 @@
 		height: 32rem;
 		background-color: var(--gray);
 		z-index: 1;
-		border-radius: 10px 0 0 0;
+		border-radius: 10px 0 10px 0;
 		overflow: hidden;
 	}
 
@@ -185,13 +157,6 @@
 		.hero-content {
 			padding: 0rem 1.5rem 0 1.5rem;
 		}
-
-		.hero::after {
-			right: -51px;
-			top: -36px;
-			width: 95px;
-			height: 75px;
-		}
 	}
 
 	@media only screen and (max-width: 430px) {
@@ -201,14 +166,11 @@
 		padding: 0rem;
 		border: none;
 		z-index: 0;
+		clip-path: polygon(0% 0%, 100% 0%, 100% 0, 100% 100%, 0% 100%);
 	}
 
 	.hero-bg-img {
 		background-image: none;
-	}
-
-	.hero::after {
-		display: none;
 	}
 
 	.hero-img {
@@ -220,6 +182,10 @@
 
 	.hero-content {
 		padding: 0 1rem 0 1rem;
+	}
+
+	.hero-content-event-name {
+		font-size: 2.5rem;
 	}
 }
 </style>
