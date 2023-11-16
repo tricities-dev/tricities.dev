@@ -24,7 +24,7 @@
 	{#if icon}
 		<Icon icon={ iconName } width={24} height={24}/>
 	{/if}
-	{title}
+	{ title }
 </a>
 
 <style>

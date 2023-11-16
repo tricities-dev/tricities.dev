@@ -34,7 +34,7 @@
 
 <div class="breakout hero">
 	<div class="hero-img">
-		<img src={featuredImage} alt="TriDev Meetup Talk" />
+		<img src={ featuredImage } alt="TriDev Meetup Talk" />
 	</div>
 	<div class="hero-content">
 		<h2 class="hero-content-event-name">
