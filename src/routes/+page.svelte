@@ -2,14 +2,6 @@
 	import Hero from "../components/ui/Hero.svelte";
 	import FeedContainer from "../components/ui/FeedContainer.svelte";
 	import MemberFeed from "../components/memberFeed/MemberFeed.svelte";
-	import { onMount } from "svelte";
-
-	// onMount(async () => {
-	// 	const response = await fetch('https://meetup-scrapper.mackenly.workers.dev/api/tridev/latest');
-	// 	const latest = await response.json()
-	//
-	// 	console.log(latest)
-	// })
 </script>
 
 <main class="full-width content-grid">
