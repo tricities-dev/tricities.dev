@@ -39,9 +39,9 @@
 		position: relative;
 		display: flex;
 		flex-direction: row;
-		flex-wrap: wrap;
+		flex-wrap: wrap-reverse;
 		justify-content: flex-start;
-		align-items: flex-start;
+		align-items: flex-end;
 		gap: 2rem;
 		width: 100%;
 		height: auto;
@@ -67,10 +67,6 @@
 	}
 
 	@media only screen and (max-width: 430px) {
-		.main-content {
-			margin-top: 10rem;
-		}
-
 		section {
 			width: 100%;
 			height: auto;
