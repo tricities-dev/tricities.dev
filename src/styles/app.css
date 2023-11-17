@@ -17,7 +17,7 @@
 	--slate: #2C6483;
 	--cream: #F3EAD9;
 
-	--whiteGlass: rgba(255, 255, 255, 0.5);
+	--whiteGlass: rgba(255, 255, 255, 0.65);
 	--blackGlass: rgba(0, 0, 0, 0.75);
 	--expGlass: rgba(204,225,249, 0.75);
 
@@ -64,18 +64,20 @@
 }
 
 [data-theme='exp'] {
-	--primary-bg-color: #fff;
-	--primary-text-color: #394e6a;
-	--cta-btn-bg: #057Aff;
-	--cta-btn-fg: #dbe1ff;
+	--primary-bg-color: #000;
+	--primary-text-color: green;
+	--cta-btn-bg: green;
+	--cta-btn-fg: white;
 	--cta-btn-hover-bg: #046DE5;
-	--header-gradient: linear-gradient(to right, #fff 0%, #f0f6ff 100%);
-	--header-text-color: #394e6a;
-	--gradient-bg-vert: linear-gradient(to bottom, #f0f6ff 0%, #fff 100%);
-	--glass-bg: var(--expGlass);
-	--filter-invert: invert(0);
-	--triforce-opacity: 0.75;
-	--border-color: #f0f6ff;
+	--header-gradient: linear-gradient(to right, #000 0%, #222 100%);
+	--header-text-color: green;
+	--gradient-bg-vert: linear-gradient(to bottom, #222 0%, #000 100%);
+	--glass-bg: var(--blackGlass);
+	--filter-invert: invert(1);
+	--triforce-opacity: 0.05;
+	--border-color: #222;
+	--header-font-family: 'Courier New', Courier, monospace;
+	--body-font-family: 'Courier New', Courier, monospace;
 }
 
 * {
