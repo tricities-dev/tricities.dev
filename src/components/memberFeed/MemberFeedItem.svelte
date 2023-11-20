@@ -4,7 +4,7 @@
 	export let title:string;
 	export let description:string;
 	export let postLink:string;
-	export let siteLink:string;
+	export let siteLink:string; //TODO: This is for a general site link for the authors site if needed
 </script>
 
 <div class="member-feed-item">

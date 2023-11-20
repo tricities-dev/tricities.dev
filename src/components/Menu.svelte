@@ -1,11 +1,7 @@
 <script lang="ts">
+	import type { Link } from '../types/menu.types';
 	import { menuStore } from '../stores';
 	import { fly } from 'svelte/transition';
-
-	type Link = {
-		title: string,
-		link: string,
-	}
 
 	const links:Link[] = [
 		{

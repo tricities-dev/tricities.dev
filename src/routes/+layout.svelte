@@ -16,7 +16,7 @@
 </script>
 
 <!-- full page div making the whole screen dark mode -->
-<div class="page-content content-grid" data-theme={$themeStore}>
+<div class="page-content content-grid" data-theme={ $themeStore }>
 	<Navbar />
 	<slot></slot>
 	<Footer />

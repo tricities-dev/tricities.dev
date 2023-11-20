@@ -1,13 +1,6 @@
 <script lang="ts">
+	import type { memberPosts } from '../../types/feed.types';
 	import MemberFeedItem from "./MemberFeedItem.svelte";
-	type memberPost = {
-		title: string,
-		description: string,
-		postLink: string,
-		siteLink: string,
-	}
-
-	type memberPosts = memberPost[]
 
 	// TODO: Build a member RSS feed
 	let memberFeed:memberPosts = [

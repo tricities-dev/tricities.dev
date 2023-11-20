@@ -5,7 +5,7 @@
 	export let className: string;
 </script>
 
-<div class={className} id={id} style="z-index: {zIndex};">
+<div class={ className } id={ id } style="z-index: {zIndex};">
 	<div class="feed-header">
 		<h2 class="feed-title">{ title }</h2>
 	</div>
