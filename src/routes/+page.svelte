@@ -8,13 +8,13 @@
 	<Hero />
 	<div class="breakout main-content">
 		<section>
-			<FeedContainer title="Member Feed" id="member-feed" className="feed-container member-feed" zIndex={0}>
+			<FeedContainer title="Member Feed" id="member-feed" className="feed-container member-feed" zIndex={ 0 }>
 				<MemberFeed />
 			</FeedContainer>
 		</section>
 		<aside>
-			<FeedContainer title="On Discord" id="on-discord" className="feed-container" zIndex={1}/>
-			<FeedContainer title="Sponsors" id="sponsors" className="feed-container" zIndex={0}/>
+			<FeedContainer title="On Discord" id="on-discord" className="feed-container" zIndex={ 1 }/>
+			<FeedContainer title="Sponsors" id="sponsors" className="feed-container" zIndex={ 0 }/>
 		</aside>
 	</div>
 </main>

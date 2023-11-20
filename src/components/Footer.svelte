@@ -34,7 +34,7 @@
 			Tri-Cities Dev, non-profit CC0 on <a href="https://github.com/tricities-dev">Github</a>
 		</p>
 		<img
-			class:altTheme={altTheme}
+			class:altTheme={ altTheme }
 			src="./lightbulb.svg"
 			alt="lightbulb used to toggle theme"
 			on:mousedown={watchForLongPress}

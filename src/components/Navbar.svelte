@@ -12,15 +12,15 @@
 	class:shadow={y > 0 || $menuStore}
 >
 	<div class="navbar">
-		<Logo width={175} height={55} dark={ $themeStore === 'dark' ? true : false }/>
-		<Hamburger bind:open={$menuStore} --color={ $themeStore === 'light' || $themeStore === 'exp' ? 'white' : 'black' }/>
+		<Logo width={ 175 } height={ 55 } dark={ $themeStore === 'dark' ? true : false }/>
+		<Hamburger bind:open={ $menuStore } --color={ $themeStore === 'light' || $themeStore === 'exp' ? 'white' : 'black' }/>
 	</div>
 	<div class="menubar">
 		<Menu />
 	</div>
 </div>
 
-<svelte:window bind:scrollY={y} />
+<svelte:window bind:scrollY={ y } />
 
 <style>
 	.nav {

@@ -20,9 +20,9 @@
 	}
 </script>
 
-<a href={link} class="cta-button" target="_blank">
+<a href={ link } class="cta-button" target="_blank">
 	{#if icon}
-		<Icon icon={ iconName } width={24} height={24}/>
+		<Icon icon={ iconName } width={ 24 } height={ 24 }/>
 	{/if}
 	{ title }
 </a>
