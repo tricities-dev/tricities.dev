@@ -5,6 +5,16 @@
 	import Menu from "./Menu.svelte";
 
 	let y:number;
+
+	const hamburgerColor = (theme:string):string => {
+		let color:string
+
+		if (theme === 'exp' || theme === 'dark') {
+			return color = 'white'
+		}
+
+		return color = 'black'
+	}
 </script>
 
 <div class="nav"
@@ -13,7 +23,7 @@
 >
 	<div class="navbar">
 		<Logo width={ 175 } height={ 55 } dark={ $themeStore === 'dark' ? true : false }/>
-		<Hamburger bind:open={ $menuStore } --color={ $themeStore === 'light' || $themeStore === 'exp' ? 'white' : 'black' }/>
+		<Hamburger bind:open={ $menuStore } --color={ hamburgerColor($themeStore) }/>
 	</div>
 	<div class="menubar">
 		<Menu />
