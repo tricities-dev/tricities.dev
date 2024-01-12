@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"dev-port3000": "vite dev --port 3000",
+		"dev-host": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -14,6 +15,7 @@
 		"lint": "eslint --ext .js,.ts,.svelte"
 	},
 	"devDependencies": {
+		"@iconify/svelte": "^3.1.4",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/adapter-netlify": "^1.0.0-next.78",
 		"@sveltejs/kit": "next",
@@ -28,6 +30,7 @@
 		"sass": "^1.55.0",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.7.1",
+		"svelte-hamburgers": "^4.2.0",
 		"svelte-preprocess": "^4.10.6",
 		"tslib": "^2.3.1",
 		"typescript": "^4.8.4",

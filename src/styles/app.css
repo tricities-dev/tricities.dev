@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
+
+@font-face {
+	font-family: 'Gotham';
+	font-style: bold;
+	src: url('/fonts/Gotham/GothamBold_Regular.otf');
+}
+
+:root {
+	--black: #0F0F0F;
+	--charcoal: #17171A;
+	--grayDark: #262626;
+	--gray: #989898;
+	--grayLight: #E8E8E8;
+	--white: #EFEFEF;
+	--gold: #EEBE41;
+	--slate: #2C6483;
+	--cream: #F3EAD9;
+
+	--whiteGlass: rgba(255, 255, 255, 0.65);
+	--blackGlass: rgba(0, 0, 0, 0.75);
+	--expGlass: rgba(204,225,249, 0.75);
+
+	--header-font-family: 'Gotham', sans-serif;
+	--body-font-family: 'Inter', sans-serif;
+
+	--btn-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, .25));;
+
+	--nav-height: 7rem;
+	--calc-width: calc(100% - 12rem);
+
+	--full-width-padding: 12rem;
+	--breakout-width: 6rem;
+}
+
+[data-theme='light'] {
+	--primary-bg-color: #fff;
+	--primary-text-color: #394e6a;
+	--cta-btn-bg: var(--slate);
+	--cta-btn-fg: var(--cream);
+	--cta-btn-hover-bg: #046DE5;
+	--header-gradient: linear-gradient(to right, var(--white) 0%, var(--grayLight) 100%);
+	--header-text-color: #394e6a;
+	--gradient-bg-vert: linear-gradient(to bottom, var(--grayLight) 0%, var(--grayLight) 100%);
+	--glass-bg: var(--whiteGlass);
+	--filter-invert: invert(0);
+	--triforce-opacity: 0.05;
+	--triforce-invert: invert(1);
+}
+
+[data-theme='dark'] {
+	--primary-bg-color: var(--black);
+	--primary-text-color: var(--white);
+	--cta-btn-bg: var(--gold);
+	--cta-btn-fg: var(--black);
+	--cta-btn-hover-bg: #D6AB3A;
+	--header-gradient: linear-gradient(to right, var(--grayDark) 0%, var(--charcoal) 100%);
+	--header-text-color: var(--gray);
+	--gradient-bg-vert: linear-gradient(to bottom, var(--charcoal) 0%, var(--black) 100%);
+	--glass-bg: var(--blackGlass);
+	--filter-invert: invert(1);
+	--triforce-opacity: 0.05;
+	--border-color: var(--charcoal);
+}
+
+[data-theme='exp'] {
+	--primary-bg-color: #000;
+	--primary-text-color: green;
+	--cta-btn-bg: green;
+	--cta-btn-fg: white;
+	--cta-btn-hover-bg: #046DE5;
+	--header-gradient: linear-gradient(to right, #000 0%, #222 100%);
+	--header-text-color: green;
+	--gradient-bg-vert: linear-gradient(to bottom, #222 0%, #000 100%);
+	--glass-bg: var(--blackGlass);
+	--filter-invert: invert(1);
+	--triforce-opacity: 0.05;
+	--border-color: #222;
+	--header-font-family: 'Courier New', Courier, monospace;
+	--body-font-family: 'Courier New', Courier, monospace;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--primary-bg-color);
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+/*
+ * Named CSS Grid Layout
+ * YouTube link: https://www.youtube.com/watch?v=c13gpBrnGEw
+ * Easily set three widths:
+ * - Full-width, Breakout, Content
+ */
+.content-grid {
+  display: grid;
+  grid-template-columns:
+   [full-width-start] 0
+	 [full-width-padding-start] var(--full-width-padding)
+	 [breakout-start] var(--breakout-width)
+   [content-start] 1fr [content-end]
+   var(--breakout-width) [breakout-end]
+	 var(--full-width-padding) [full-width-padding-end]
+   0 [full-width-end];
+  height: 100%;
+}
+
+.content-grid > * {
+  grid-column: content;
+}
+
+.content-grid > .breakout {
+  grid-column: breakout;
+}
+
+.content-grid > .full-width {
+  grid-column: full-width;
+  display: grid;
+  grid-template-columns: inherit;
+}
+
+@media only screen and (max-width: 1366px) {
+	:root {
+		--full-width-padding: 2rem;
+		--breakout-width: 3rem;
+	}
+}
+
+@media only screen and (max-width: 430px) {
+	:root {
+		--calc-width: calc(100% - 2rem);
+		--full-width-padding: .5rem;
+		--breakout-width: 1rem;
+	}
+}

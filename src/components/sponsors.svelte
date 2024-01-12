@@ -1,7 +1,8 @@
 <script lang="ts">
+	// TODO: This is going to be rebuilt...this is why it wasn't touched
 	import { flip } from 'svelte/animate';
 	import { onDestroy } from 'svelte';
-	import { config } from '../stores.js';
+	// import { config } from '../stores.js';
 
 	export let data: Array<any>;
 	export let cssClass: string = '';
@@ -134,7 +135,7 @@
 <div class="carousel-container {$config.screenMode} {cssClass}" on:mouseenter={stopAutoPlay} on:mouseleave={startAutoPlay}>
 	<h2>Sponsors</h2>
 	<button class="left" on:click={rotateLeft}>
-		<svg class="{$config.screenMode}" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="-10 0 64 44">	
+		<svg class="{$config.screenMode}" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="-10 0 64 44">
 			<path d="M20 44 0 24 20 4l2.8 2.85L5.65 24 22.8 41.15Z"/>
 		</svg>
 	</button>
