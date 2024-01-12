@@ -7,7 +7,7 @@
 	const multiImg:string = "tridev-logo-multi.svg";
 </script>
 
-<img class="logo" src={ dark ? logoImg : multiImg } width={ width } height={ height } alt="TriDev Logo" />
+<a href="/"><img class="logo" src={ dark ? logoImg : multiImg } width={ width } height={ height } alt="TriDev Logo" /></a>
 
 <style lang="scss">
 .logo {

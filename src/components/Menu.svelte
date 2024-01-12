@@ -9,12 +9,12 @@
 			link: '#member-feed',
 		},
 		{
-			title: 'On Discord',
-			link: '#on-discord',
+			title: 'The Meetup',
+			link: 'https://meetup.com/tridev'
 		},
 		{
-			title: 'Our Sponsors',
-			link: '#sponsors',
+			title: 'On Discord',
+			link: 'https://discord.gg/B3JAaXvkCt',
 		}
 	]
 </script>

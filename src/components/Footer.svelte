@@ -31,7 +31,7 @@
 <footer>
 	<div class="footer-content">
 		<p class="site-note">
-			Tri-Cities Dev, non-profit CC0 on <a href="https://github.com/tricities-dev">Github</a>
+			TriDev is a software developer community NorthEast Tennessee. Found a bug? Contribute a fix on <a href="https://github.com/tricities-dev">Github</a>
 		</p>
 		<img
 			class:altTheme={ altTheme }

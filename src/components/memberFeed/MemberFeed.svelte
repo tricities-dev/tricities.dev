@@ -1,8 +1,24 @@
 <script lang="ts">
 	import type { memberPosts } from '../../types/feed.types';
 	import MemberFeedItem from "./MemberFeedItem.svelte";
+	import {onMount} from "svelte";
+	import {themeStore} from "../../stores";
+
+
+	onMount(() => {
+		fetch("https://ryanhayes.net/feed")
+			.then(response => response.text())
+			.then(str => {
+				let parsed = new window.DOMParser().parseFromString(str, "text/xml")
+				console.log(parsed)
+				return parsed
+			})
+			.then(data => console.log(data))
+	})
 
 	// TODO: Build a member RSS feed
+
+
 	let memberFeed:memberPosts = [
 		{
 			title: 'Azure Dev: Problem starting the plugin CredentialProvider.Microsoft [Solved]',

@@ -13,8 +13,25 @@
 			</FeedContainer>
 		</section>
 		<aside>
-			<FeedContainer title="On Discord" id="on-discord" className="feed-container" zIndex={ 1 }/>
-			<FeedContainer title="Sponsors" id="sponsors" className="feed-container" zIndex={ 0 }/>
+			<FeedContainer title="On Discord" id="on-discord" className="feed-container" zIndex={ 1 }>
+				<a class="discord-join" href="https://discord.gg/B3JAaXvkCt">
+					<h2>Join us!</h2>
+				</a>
+			</FeedContainer>
+			<FeedContainer title="Sponsors" id="sponsors" className="feed-container" zIndex={ 0 }>
+				<a href="https://bitsum.com/">
+					<img src="bitsum-logo-dark.webp" alt="Bitsum" />
+				</a>
+				<a href="https://sparkplaza.com">
+					<img src="Spark-Plaza-logo-refresh-horizontal-2018-white.png" alt="Bitsum" />
+				</a>
+				<a href="https://www.teksystems.com/">
+					<img src="teksystems-logo-white.png" alt="TekSystems" />
+				</a>
+				<a href="https://dotnetfoundation.org/">
+					<img src="dotnet.svg" alt="The .NET Foundation" />
+				</a>
+			</FeedContainer>
 		</aside>
 	</div>
 </main>
@@ -25,6 +42,11 @@
 		row-gap: 2rem;
 		padding-top: 7rem;
 		background-color: var(--primary-bg-color);
+	}
+
+	.discord-join {
+		color: white;
+		text-align: center;
 	}
 
 	.main-content {
