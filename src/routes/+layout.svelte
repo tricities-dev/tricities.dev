@@ -11,12 +11,13 @@
 			.matches;
 
 		$themeStore = prefersDarkMode ? 'dark' : 'light';
+		document.querySelector('html')?.setAttribute('data-theme', $themeStore);
 	})
 
 </script>
 
 <!-- full page div making the whole screen dark mode -->
-<div class="page-content content-grid" data-theme={ $themeStore }>
+<div class="page-content content-layout" data-theme={ $themeStore }>
 	<Navbar />
 	<slot></slot>
 	<Footer />
@@ -24,11 +25,14 @@
 
 <style>
 .page-content {
+	width: 100vw;
+	height: 100%;
 	background-color: var(--primary-bg-color);
 }
 
 @media only screen and (max-width: 430px) {
 	.page-content {
+		width: 100vw;
 		padding: 0;
 	}
 }

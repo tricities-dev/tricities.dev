@@ -29,7 +29,7 @@
 	--nav-height: 7rem;
 	--calc-width: calc(100% - 12rem);
 
-	--full-width-padding: 12rem;
+	--layout-padding: 12rem;
 	--breakout-width: 6rem;
 }
 
@@ -84,59 +84,32 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	width: 100vw;
 }
 
-html, body {
-	margin: 0;
-	padding: 0;
+html {
 	background-color: var(--primary-bg-color);
 }
 
 body {
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: space-between;
 	align-items: center;
-	width: 100%;
-	height: 100%;
+	background-color: var(--primary-bg-color);
+	width: 100vw;
 }
 
 /*
- * Named CSS Grid Layout
- * YouTube link: https://www.youtube.com/watch?v=c13gpBrnGEw
- * Easily set three widths:
- * - Full-width, Breakout, Content
+ *	Layout Utilities
  */
-.content-grid {
-  display: grid;
-  grid-template-columns:
-   [full-width-start] 0
-	 [full-width-padding-start] var(--full-width-padding)
-	 [breakout-start] var(--breakout-width)
-   [content-start] 1fr [content-end]
-   var(--breakout-width) [breakout-end]
-	 var(--full-width-padding) [full-width-padding-end]
-   0 [full-width-end];
-  height: 100%;
-}
-
-.content-grid > * {
-  grid-column: content;
-}
-
-.content-grid > .breakout {
-  grid-column: breakout;
-}
-
-.content-grid > .full-width {
-  grid-column: full-width;
-  display: grid;
-  grid-template-columns: inherit;
+.content-layout {
+	padding-inline: var(--layout-padding);
 }
 
 @media only screen and (max-width: 1366px) {
 	:root {
-		--full-width-padding: 2rem;
+		--layout-padding: 2rem;
 		--breakout-width: 3rem;
 	}
 }
@@ -144,7 +117,7 @@ body {
 @media only screen and (max-width: 430px) {
 	:root {
 		--calc-width: calc(100% - 2rem);
-		--full-width-padding: .5rem;
+		--layout-padding: .5rem;
 		--breakout-width: 1rem;
 	}
 }

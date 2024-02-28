@@ -4,9 +4,9 @@
 	import MemberFeed from "../components/memberFeed/MemberFeed.svelte";
 </script>
 
-<main class="full-width content-grid">
+<main class="content-layout">
 	<Hero />
-	<div class="breakout main-content">
+	<div class="main-content">
 		<section>
 			<FeedContainer title="Member Feed" id="member-feed" className="feed-container member-feed" zIndex={ 0 }>
 				<MemberFeed />
@@ -38,6 +38,8 @@
 
 <style>
 	main {
+		display: flex;
+		flex-direction: column;
 		height: 100%;
 		row-gap: 2rem;
 		padding-top: 7rem;
@@ -81,6 +83,10 @@
 	}
 
 	@media only screen and (max-width: 430px) {
+		main {
+			width: 100%;
+		}
+
 		section {
 			width: 100%;
 			height: auto;

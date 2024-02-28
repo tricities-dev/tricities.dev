@@ -176,8 +176,12 @@
 	.hero-img {
 		width: 100%;
 		height: auto;
-		aspect-ratio: 1/1;
 		border-radius: 0;
+	}
+
+	.hero-img > img {
+		width: 100%;
+		height: auto;
 	}
 
 	.hero-content {

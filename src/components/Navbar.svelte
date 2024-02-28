@@ -40,10 +40,10 @@
 		flex-wrap: nowrap;
 		justify-content: space-around;
 		align-items: center;
-		width: 100%;
+		width: 100vw;
 		min-height: var(--nav-height);
 		top: 0;
-		padding: 2rem 12rem;
+		left: 0;
 		z-index: 100;
 		transition: ease-in-out .3s;
 	}
@@ -55,7 +55,9 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
-		top: 0;
+		height: 100%;
+		padding-block: 2rem;
+		padding-inline: 12rem;
 	}
 
 	.glass {
@@ -74,6 +76,10 @@
 	@media only screen and (max-width: 1366px) {
 		.nav {
 			padding-inline: 4rem;
+		}
+
+		.navbar {
+			padding-inline: 0;
 		}
 	}
 

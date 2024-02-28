@@ -6,9 +6,12 @@
 	let dur:number;
 	let altTheme:boolean = false;
 
+
 	function updateTheme() {
 		let newTheme:string = $themeStore === 'light' ? 'dark' : 'light';
 		$themeStore = newTheme;
+
+		document.querySelector('html')?.setAttribute('data-theme', $themeStore);
 	}
 
 	function watchForLongPress(e:any) {
@@ -19,12 +22,14 @@
 			dur = endSeconds - startSeconds;
 			if (dur >= 1.5) {
 				$themeStore = 'exp'
+				document.querySelector('html')?.setAttribute('data-theme', $themeStore);
 				altTheme = true
 			} else {
 				updateTheme()
 				altTheme = false
 			}
 		}
+
 	}
 </script>
 
