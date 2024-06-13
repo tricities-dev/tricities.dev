@@ -13,6 +13,18 @@ Feel free to add suggestions to Issues and submit pull requests for Issues that 
 
 ## Developing
 
+### Prerequisites
+
+* (The latest stable version of Node)[https://nodejs.org/en/download]
+
+### Using a Dev Container
+
+If you don't want to install Node or other tools locally, or you have antivirus causing slowness on build, use the configured VS Dev Container.
+
+For more info on dev containers, visit (VS Code Dev Containers)[https://code.visualstudio.com/docs/devcontainers/containers]
+
+### Running in dev mode
+
 Once you've cloned this project, you'll need to run `npm install` to grab all of the dependencies necessary.
 
 ```bash
