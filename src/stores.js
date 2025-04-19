@@ -1,19 +1,38 @@
-import { writable, get, derived } from "svelte/store";
+import { writable } from "svelte/store";
 
 // Check if localStorage is available
-const isLocalStorageAvailable = typeof localStorage !== 'undefined';
+const isLocalStorageAvailable = typeof localStorage !== "undefined";
 
-const currentTheme =  isLocalStorageAvailable ? localStorage.getItem('currentTheme') || 'dark' : 'dark';
+const currentTheme =  isLocalStorageAvailable ? localStorage.getItem("currentTheme") || "dark" : "dark";
 
-const themeStore = writable(currentTheme);
-const menuStore = writable(false);
-
+export const themeStore = writable(currentTheme);
+export const menuStore = writable(false);
 
 // Subscribe to changes and save to local storage if available
 if (isLocalStorageAvailable) {
-  themeStore.subscribe(($themeData) => {
-    localStorage.setItem('currentTheme', $themeData);
-  });
+	themeStore.subscribe(($themeData) => {
+		localStorage.setItem("currentTheme", $themeData);
+	});
 }
 
-export { themeStore, menuStore };
+export const menuOpen = writable(false);
+export const menuItems = writable([
+	{
+		name: "Home",
+		href: "/",
+		current: true
+	}
+]);
+
+export const feedItems = writable([]);
+
+export const setMenuItemActive = (href) => {
+	menuItems.update((items) => {
+		items.forEach((item) => {
+			item.current = item.href === href;
+		});
+		return items;
+	});
+};
+
+export const feedLoading = writable(false);

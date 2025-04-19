@@ -6,9 +6,11 @@
 </script>
 
 <div class={ className } id={ id } style="z-index: {zIndex};">
-	<div class="feed-header">
-		<h2 class="feed-title">{ title }</h2>
-	</div>
+	{#if title}
+		<div class="feed-header">
+			<h2 class="feed-title">{ title }</h2>
+		</div>
+	{/if}
 	<div class="feed-content">
 		<slot></slot>
 	</div>
@@ -30,6 +32,7 @@
 	border: 2px solid var(--border-color);
 	border-radius: 10px 0 0 0;
 	clip-path: polygon(0% 0%, var(--top-end) 0%, 100% 4rem, 100% 100%, 0% 100%);
+	padding: 1rem;
 }
 
 .member-feed {
@@ -43,24 +46,53 @@
 	justify-content: flex-start;
 	align-items: center;
 	width: 100%;
-	height: 6rem;
+	height: auto;
+	min-height: 6rem;
 	background: var(--header-gradient);
 	border-radius: 10px 0 0 0;
+	padding: 1rem;
 }
 
 .feed-title {
 	font-family: var(--header-font-family);
-	font-size: 2rem;
+	font-size: clamp(1.5rem, 3vw, 2rem);
 	color: var(--header-text-color);
-	padding-left: 3rem;
+	padding-left: 1rem;
 }
 
 .feed-content {
 	width: 100%;
+	padding: 1rem;
 }
+
+@media only screen and (max-width: 768px) {
+	.feed-container {
+		border-radius: 10px;
+		clip-path: none;
+	}
+
+	.feed-header {
+		border-radius: 10px 10px 0 0;
+	}
+
+	.feed-title {
+		padding-left: 0.5rem;
+	}
+}
+
 @media only screen and (max-width: 430px) {
+	.feed-container {
+		border-radius: 0;
+		padding: 0.5rem;
+	}
+
 	.feed-header {
 		border-radius: 0;
+		padding: 0.5rem;
+	}
+
+	.feed-content {
+		padding: 0.5rem;
 	}
 }
 </style>

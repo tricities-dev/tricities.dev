@@ -2,7 +2,7 @@
 	import { onMount } from "svelte";
 	import '../styles/app.css';
 	// import link from './link.svelte';
-	import { themeStore } from '../stores.js';
+	import { themeStore } from '../stores';
 	import Navbar from "../components/Navbar.svelte";
 	import Footer from '../components/Footer.svelte';
 
@@ -25,6 +25,21 @@
 <style>
 .page-content {
 	background-color: var(--primary-bg-color);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+@media only screen and (max-width: 1366px) {
+	.page-content {
+		padding: 0;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.page-content {
+		padding: 0;
+	}
 }
 
 @media only screen and (max-width: 430px) {

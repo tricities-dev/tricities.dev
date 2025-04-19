@@ -46,17 +46,24 @@
 		font-family: var(--body-font-family);
 		letter-spacing: 0.15em;
 		padding: 1em;
-		padding-top: 0;
+		padding-top: 0.5em;
+		padding-bottom: 1.5em;
 		transition: ease-in-out .5s;
 		z-index: 100;
+		overflow-x: hidden;
+		text-align: center;
 	}
 
 	a {
 		cursor: pointer;
-		width: max-content;
+		width: 100%;
+		max-width: 90%;
 		margin: 1rem auto;
 		text-decoration: none;
 		color: var(--primary-text-color);
+		overflow-wrap: break-word;
+		word-wrap: break-word;
+		word-break: break-word;
 	}
 
 	a:hover {

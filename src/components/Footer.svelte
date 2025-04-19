@@ -69,6 +69,7 @@ footer {
 {
 	font-family: var(--body-font-family);
 	color: var(--primary-text-color);
+	text-align: center;
 }
 
 .footer-content > img {

@@ -20,10 +20,13 @@
 <div class="nav"
 	class:glass={y > 0 || $menuStore}
 	class:shadow={y > 0 || $menuStore}
+	class:expanded={$menuStore}
 >
-	<div class="navbar">
-		<Logo width={ 175 } height={ 55 } dark={ $themeStore === 'dark' ? true : false }/>
-		<Hamburger bind:open={ $menuStore } --color={ hamburgerColor($themeStore) }/>
+	<div class="navbar-container">
+		<div class="navbar">
+			<Logo width={ 175 } height={ 55 } dark={ $themeStore === 'dark' ? true : false }/>
+			<Hamburger bind:open={ $menuStore } --color={ hamburgerColor($themeStore) }/>
+		</div>
 	</div>
 	<div class="menubar">
 		<Menu />
@@ -38,14 +41,29 @@
 		display: flex;
 		flex-direction: column;
 		flex-wrap: nowrap;
-		justify-content: space-around;
 		align-items: center;
 		width: 100%;
-		min-height: var(--nav-height);
+		height: var(--nav-height);
 		top: 0;
-		padding: 2rem 12rem;
+		left: 0;
+		right: 0;
+		padding: 0;
 		z-index: 100;
 		transition: ease-in-out .3s;
+	}
+	
+	.nav.expanded {
+		height: auto;
+		min-height: var(--nav-height);
+	}
+
+	.navbar-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: var(--nav-height);
+		flex-shrink: 0;
 	}
 
 	.navbar {
@@ -55,7 +73,17 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
-		top: 0;
+		max-width: 1440px;
+		margin: 0 auto;
+		height: 100%;
+		padding: 0 2rem;
+	}
+
+	.menubar {
+		width: 100%;
+		max-width: 1440px;
+		max-height: calc(100vh - var(--nav-height));
+		overflow-y: auto;
 	}
 
 	.glass {
@@ -72,14 +100,20 @@
 	}
 
 	@media only screen and (max-width: 1366px) {
-		.nav {
-			padding-inline: 4rem;
+		.navbar {
+			padding: 0 1rem;
+		}
+	}
+
+	@media only screen and (max-width: 768px) {
+		.navbar {
+			padding: 0 0.75rem;
 		}
 	}
 
 	@media only screen and (max-width: 430px) {
-		.nav {
-			padding-inline: 1.5rem;
+		.navbar {
+			padding: 0 0.5rem;
 		}
 	}
 </style>
