@@ -1,15 +1,18 @@
 <script lang="ts">
 	import CtaLink from "../ui/CtaLink.svelte";
 
-	export let title:string;
-	export let description:string;
-	export let postLink:string;
-	export let siteLink:string; //TODO: This is for a general site link for the authors site if needed
+	export let title: string;
+	export let description: string;
+	export let postLink: string;
+	export let siteLink: string; //TODO: This is for a general site link for the authors site if needed
+	export let imageUrl: string | undefined = undefined;
 </script>
 
 <div class="member-feed-item">
-	<div class="member-feed-item-image"></div>
-	<div class="member-feed-item-content">
+	{#if imageUrl}
+		<div class="member-feed-item-image" style="background-image: url({imageUrl}); background-size: cover; background-position: center;"></div>
+	{/if}
+	<div class="member-feed-item-content" class:no-image={!imageUrl}>
 		<h3 class="feed-item-title">{ title }</h3>
 		<p class="feed-item-description">{ description }</p>
 		<CtaLink title="Read More..." link={postLink} />
@@ -46,6 +49,10 @@
 		align-items: flex-start;
 		gap: .75rem;
 		min-width: min(20rem, 100%);
+	}
+
+	.member-feed-item-content.no-image {
+		min-width: 100%;
 	}
 
 	.feed-item-title {

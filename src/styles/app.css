@@ -3,7 +3,14 @@
 @font-face {
 	font-family: 'Gotham';
 	font-style: bold;
-	src: url('/fonts/Gotham/GothamBold_Regular.otf');
+	font-display: swap;
+	src: url('/fonts/Gotham/GothamBold_Regular.otf') format('opentype');
+}
+
+/* Ensure content is visible during font load */
+html {
+	font-display: optional;
+	transition: background-color 0ms, color 0ms;
 }
 
 :root {
@@ -33,7 +40,8 @@
 	--breakout-width: 6rem;
 }
 
-[data-theme='light'] {
+/* Base theme styles applied to HTML element */
+html[data-theme='light'] {
 	--primary-bg-color: #fff;
 	--primary-text-color: #394e6a;
 	--cta-btn-bg: var(--slate);
@@ -46,9 +54,11 @@
 	--filter-invert: invert(0);
 	--triforce-opacity: 0.05;
 	--triforce-invert: invert(1);
+	background-color: var(--primary-bg-color);
+	color: var(--primary-text-color);
 }
 
-[data-theme='dark'] {
+html[data-theme='dark'] {
 	--primary-bg-color: var(--black);
 	--primary-text-color: var(--white);
 	--cta-btn-bg: var(--gold);
@@ -61,6 +71,8 @@
 	--filter-invert: invert(1);
 	--triforce-opacity: 0.05;
 	--border-color: var(--charcoal);
+	background-color: var(--primary-bg-color);
+	color: var(--primary-text-color);
 }
 
 [data-theme='exp'] {
@@ -86,10 +98,10 @@
 	box-sizing: border-box;
 }
 
+/* Remove duplicate background-color declarations */
 html, body {
 	margin: 0;
 	padding: 0;
-	background-color: var(--primary-bg-color);
 }
 
 body {

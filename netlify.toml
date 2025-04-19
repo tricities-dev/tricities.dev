@@ -12,13 +12,15 @@
   # a base has not been set. This sample publishes the directory
   # located at the absolute path "root/src/build"
 
-  publish = "build/"
+  publish = "build"
 
   # Default build command.
   command = "npm run build"
 
+  functions = "netlify/functions/dist"
+
 # Production context: all deploys from the Production branch
-# set in your site’s Branches settings in the UI will inherit
+# set in your site's Branches settings in the UI will inherit
 # these settings. You can define environment variables
 # here but we recommend using the Netlify UI for sensitive
 # values to keep them out of your source repository.
@@ -57,7 +59,7 @@
 
 # Specific branch context: all deploys from
 # this specific branch will inherit these settings.
-[context.staging] # “staging” is a branch name
+[context.staging] # "staging" is a branch name
   command = "echo 'staging'"
   base = "staging"
 
@@ -88,16 +90,17 @@
   # Directory with serverless functions, including background
   # functions, to deploy. This is relative to the base directory
   # if one has been set, or the root directory if
-  # a base hasn’t been set.
-  directory = "functions/"
+  # a base hasn't been set.
+  directory = "netlify/functions/dist"
 
 # Use [dev] to set configuration overrides for local 
 # development environments run using Netlify Dev - except 
 # for environment variables. Environment variables for Netlify 
 # Dev should be set under [context.dev.environment] instead.
 [dev]
-  framework = "svelte"
-  command = "npm run dev-port3000"
+  framework = "#custom"
+  targetPort = 3000
   port = 8888
+  command = "npm run dev-port3000"
   publish = "build"
 

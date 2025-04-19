@@ -5,6 +5,23 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
+		
+		<!-- Preload fonts to prevent layout shifts -->
+		<link rel="preload" href="%sveltekit.assets%/fonts/Gotham/GothamBold_Regular.otf" as="font" type="font/otf" crossorigin>
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" as="style">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap">
+		
+		<!-- Prevent theme flash -->
+		<script>
+			(function() {
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const theme = prefersDark ? 'dark' : 'light';
+				document.documentElement.style.backgroundColor = theme === 'dark' ? '#0F0F0F' : '#fff';
+				document.documentElement.style.color = theme === 'dark' ? '#EFEFEF' : '#394e6a';
+				document.documentElement.setAttribute('data-theme', theme);
+			})();
+		</script>
+
 		<!-- todo we will likely to do this with svelte as the site grow -->
 		<meta name="description" content="A software developer meetup in Johnson City, TN. The second Tuesday each month we discuss topics like JavaScript, React, Svelte, Vue, ASP.NET, Python, Web3 Solidity and more."/>
 
