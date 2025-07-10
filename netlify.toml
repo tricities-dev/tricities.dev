@@ -15,9 +15,9 @@
   publish = "build"
 
   # Default build command.
-  command = "npm run build"
+  command = "npm run build:functions && npm run build"
 
-  functions = "netlify/functions/dist"
+  functions = "netlify/functions-all"
 
 [build.environment]
   NODE_VERSION = "22"
@@ -29,13 +29,14 @@
 # values to keep them out of your source repository.
 [context.production]
   publish = "build/"
-  command = "npm run build"
+  command = "npm run build:functions && npm run build"
   environment = { NODE_VERSION = "22" }
 
 # Deploy Preview context: all deploys generated from
 # a pull/merge request will inherit these settings.
 [context.deploy-preview]
   publish = "build/"
+  command = "npm run build:functions && npm run build"
 
 # Here is an example of how to define context-specific
 # environment variables. Be mindful when using this
@@ -89,12 +90,7 @@
     # This feature may not be available on all plans.
     #Basic-Auth = "someuser:somepassword anotheruser:anotherpassword"
 
-[functions]
-  # Directory with serverless functions, including background
-  # functions, to deploy. This is relative to the base directory
-  # if one has been set, or the root directory if
-  # a base hasn't been set.
-  directory = "netlify/functions-all"
+
 
 # Use [dev] to set configuration overrides for local 
 # development environments run using Netlify Dev - except 
