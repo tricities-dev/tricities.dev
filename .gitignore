@@ -23,6 +23,8 @@ out/
 # Generated netlify functions
 netlify/functions/dist
 netlify/functions-all
+netlify/functions/*.js
+netlify/functions/*.js.map
 
 # IDE files
 .idea/
