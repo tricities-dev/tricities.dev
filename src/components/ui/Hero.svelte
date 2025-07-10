@@ -16,19 +16,42 @@
 	let descriptionLength:number = 200;
 
 	onMount(async () => {
-		const res = await fetch('https://meetup-scrapper.mackenly.workers.dev/api/tridev/latest', {
-			headers: {
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-			},
-		});
-		const data = await res.json();
-		name = data.name;
-		description = data.description;
-		shortDescription = buildShortDesc(data.description, descriptionLength);
-		featuredImage = data.featuredImage.length ? data.featuredImage : 'https://secure.meetupstatic.com/photos/event/e/0/1/c/clean_503817372.webp';
-		date = new Date(data.date);
-		href = data.href;
+		try {
+			const res = await fetch('https://meetup-scrapper.mackenly.workers.dev/api/tridev/latest', {
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+				},
+			});
+			
+			if (!res.ok) {
+				throw new Error(`HTTP error! status: ${res.status}`);
+			}
+			
+			const data = await res.json();
+			name = data.name;
+			description = data.description;
+			shortDescription = buildShortDesc(data.description, descriptionLength);
+			featuredImage = data.featuredImage.length ? data.featuredImage : 'https://secure.meetupstatic.com/photos/event/e/0/1/c/clean_503817372.webp';
+			date = new Date(data.date);
+			href = data.href;
+		} catch (error) {
+			console.error('Failed to fetch meetup data:', error);
+			// Fallback to default values when API is not available
+			name = 'TriDev Monthly Meetup';
+			description = 'Join us for our monthly software development meetup! We discuss the latest trends in technology, share knowledge, and connect with fellow developers in the Tri-Cities area.';
+			shortDescription = buildShortDesc(description, descriptionLength);
+			featuredImage = 'https://secure.meetupstatic.com/photos/event/e/0/1/c/clean_503817372.webp';
+			// Set to second Tuesday of current month at 6:00 PM
+			const currentDate = new Date();
+			const year = currentDate.getFullYear();
+			const month = currentDate.getMonth();
+			const secondTuesday = new Date(year, month, 1);
+			secondTuesday.setDate(secondTuesday.getDate() + (2 - secondTuesday.getDay() + 7) % 7 + 7);
+			secondTuesday.setHours(18, 0, 0, 0);
+			date = secondTuesday;
+			href = 'https://www.meetup.com/tridev/';
+		}
 	});
 </script>
 

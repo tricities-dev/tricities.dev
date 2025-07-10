@@ -2,7 +2,7 @@
 	import type { memberPosts, memberPost } from '../../types/feed.types';
 	import MemberFeedItem from "./MemberFeedItem.svelte";
 	import {onMount} from "svelte";
-	import {themeStore} from "../../stores";
+
 
 	let memberFeed: memberPosts = [];
 	let loading = true;
@@ -11,7 +11,7 @@
 	const MAX_RETRIES = 3;
 	const RETRY_DELAY = 1000; // 1 second
 
-	async function fetchAndParseRSSFeeds() {
+	async function fetchAndParseRSSFeeds(): Promise<memberPost[]> {
 		try {
 			const response = await fetch('/.netlify/functions/getRssFeeds');
 			if (!response.ok) {
@@ -120,7 +120,7 @@
 	{:else if memberFeed.length === 0}
 		<p>No posts found.</p>
 	{:else}
-		{#each memberFeed as post, i}
+		{#each memberFeed as post}
 			<MemberFeedItem title={post.title} description={post.description} postLink={post.postLink} siteLink={post.siteLink} />
 		{/each}
 	{/if}

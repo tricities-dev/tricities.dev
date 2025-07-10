@@ -4,13 +4,13 @@
 	export let icon: string;
 	export let liClasses: string = "";
 	export let aClasses: string = "";
-	import { config } from "../stores.js";
+	import { themeStore } from "../stores.js";
 </script>
 
 <li class={liClasses}>
 	<a
 		href={link}
-		class={`border ${aClasses} ${$config.screenMode}`}
+		class={`border ${aClasses} ${$themeStore === 'light' ? 'light-mode' : ''}`}
 		target="_blank"
 		rel="noreferrer noopener"
 	>

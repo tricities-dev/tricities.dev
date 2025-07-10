@@ -1,5 +1,8 @@
-import { Handler } from '@netlify/functions';
-import fetch, { Response } from 'node-fetch';
+import type { Handler } from '@netlify/functions';
+import fetch from 'node-fetch';
+import type { Response } from 'node-fetch';
+import * as fs from 'fs';
+import * as path from 'path';
 
 export const handler: Handler = async (event) => {
   // Set CORS headers
@@ -19,11 +22,28 @@ export const handler: Handler = async (event) => {
   }
 
   try {
-    const feedUrls = process.env.RSS_FEEDS?.split(',') || [];
-    console.log('Feed URLs:', feedUrls);
+    let feedUrls: string[] = [];
+    
+    // Try to read from feeds.json configuration file first
+    try {
+      const feedsConfigPath = path.join(__dirname, 'feeds.json');
+      if (fs.existsSync(feedsConfigPath)) {
+        const feedsConfig = JSON.parse(fs.readFileSync(feedsConfigPath, 'utf-8'));
+        feedUrls = feedsConfig.feeds.map((feed: any) => feed.url);
+        console.log('Loaded feeds from configuration file:', feedUrls);
+      }
+    } catch (configError) {
+      console.warn('Could not read feeds configuration file:', configError);
+    }
+    
+    // Fallback to environment variable if no config file found
+    if (feedUrls.length === 0) {
+      feedUrls = process.env.RSS_FEEDS?.split(',') || [];
+      console.log('Loaded feeds from environment variable:', feedUrls);
+    }
 
     if (feedUrls.length === 0) {
-      throw new Error('No RSS feeds configured. Check RSS_FEEDS environment variable.');
+      throw new Error('No RSS feeds configured. Add feeds to src/config/feeds.json or set RSS_FEEDS environment variable.');
     }
 
     const feedPromises = feedUrls.map(url => fetch(url).then((res: Response) => {

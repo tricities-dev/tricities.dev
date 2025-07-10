@@ -8,8 +8,7 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"sourceMap": true,
-		"strict": true,
-		"verbatimModuleSyntax": true
+		"strict": true
 	},
 	"include": [
 		"./.svelte-kit/types/**/$types.d.ts",
