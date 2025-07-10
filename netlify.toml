@@ -20,7 +20,7 @@
   functions = "netlify/functions/dist"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "22"
 
 # Production context: all deploys from the Production branch
 # set in your site's Branches settings in the UI will inherit
@@ -30,7 +30,7 @@
 [context.production]
   publish = "build/"
   command = "npm run build"
-  environment = { NODE_VERSION = "18" }
+  environment = { NODE_VERSION = "22" }
 
 # Deploy Preview context: all deploys generated from
 # a pull/merge request will inherit these settings.
