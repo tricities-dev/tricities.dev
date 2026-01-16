@@ -3,20 +3,30 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "npm run build:functions && NETLIFY_DEV=1 netlify dev",
 		"dev-port3000": "vite dev --port 3000",
+		"dev-host": "vite dev --host",
+		"vite-dev": "vite dev --port 5173",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"netlify-dev": "netlify dev",
 		"netlify-build": "netlify build",
-		"lint": "eslint --ext .js,.ts,.svelte"
+		"lint": "eslint --ext .js,.ts,.svelte",
+		"validate-feeds": "node scripts/validate-feeds.js",
+		"build:functions": "rm -rf netlify/functions/dist && mkdir -p netlify/functions/dist && tsc -p netlify/functions/tsconfig.json && cp netlify/functions/package.json netlify/functions/dist/ && cp src/config/feeds.json netlify/functions/dist/ && echo Functions built to netlify/functions/dist && rm -rf netlify/functions-all && mkdir -p netlify/functions-all && cp -r netlify/functions/dist/* netlify/functions-all/ && if [ -d .netlify/functions-internal ]; then cp -r .netlify/functions-internal/* netlify/functions-all/; fi"
 	},
 	"devDependencies": {
+		"@iconify/svelte": "^3.1.4",
+		"@netlify/functions": "^3.1.2",
+		"@playwright/test": "^1.57.0",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/adapter-netlify": "^1.0.0-next.78",
 		"@sveltejs/kit": "next",
+		"@testing-library/jest-dom": "^6.6.3",
+		"@testing-library/svelte": "^5.2.8",
+		"@types/node-fetch": "^2.6.12",
 		"@typescript-eslint/eslint-plugin": "^5.39.0",
 		"@typescript-eslint/parser": "^5.39.0",
 		"eslint": "^8.24.0",
@@ -25,13 +35,19 @@
 		"eslint-plugin-n": "^15.3.0",
 		"eslint-plugin-promise": "^6.0.1",
 		"netlify-cli": "^2.71.0",
+		"node-fetch": "^3.3.2",
 		"sass": "^1.55.0",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.7.1",
+		"svelte-hamburgers": "^4.2.0",
 		"svelte-preprocess": "^4.10.6",
 		"tslib": "^2.3.1",
 		"typescript": "^4.8.4",
-		"vite": "^3.2.7"
+		"vite": "^3.2.7",
+		"vitest": "^3.2.4"
+	},
+	"engines": {
+		"node": ">=22.0.0"
 	},
 	"type": "module"
 }

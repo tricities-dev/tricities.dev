@@ -12,25 +12,34 @@
   # a base has not been set. This sample publishes the directory
   # located at the absolute path "root/src/build"
 
-  publish = "build/"
+  publish = "build"
 
   # Default build command.
-  command = "npm run build"
+  command = "npm run build:functions && npm run build"
+
+  functions = "netlify/functions-all"
+
+[functions]
+  node_bundler = "esbuild"
+
+[build.environment]
+  NODE_VERSION = "22"
 
 # Production context: all deploys from the Production branch
-# set in your site’s Branches settings in the UI will inherit
+# set in your site's Branches settings in the UI will inherit
 # these settings. You can define environment variables
 # here but we recommend using the Netlify UI for sensitive
 # values to keep them out of your source repository.
 [context.production]
   publish = "build/"
-  command = "npm run build"
-#  environment = { NODE_VERSION = "16.17.1" }
+  command = "npm run build:functions && npm run build"
+  environment = { NODE_VERSION = "22" }
 
 # Deploy Preview context: all deploys generated from
 # a pull/merge request will inherit these settings.
 [context.deploy-preview]
   publish = "build/"
+  command = "npm run build:functions && npm run build"
 
 # Here is an example of how to define context-specific
 # environment variables. Be mindful when using this
@@ -57,7 +66,7 @@
 
 # Specific branch context: all deploys from
 # this specific branch will inherit these settings.
-[context.staging] # “staging” is a branch name
+[context.staging] # "staging" is a branch name
   command = "echo 'staging'"
   base = "staging"
 
@@ -84,20 +93,16 @@
     # This feature may not be available on all plans.
     #Basic-Auth = "someuser:somepassword anotheruser:anotherpassword"
 
-[functions]
-  # Directory with serverless functions, including background
-  # functions, to deploy. This is relative to the base directory
-  # if one has been set, or the root directory if
-  # a base hasn’t been set.
-  directory = "functions/"
+
 
 # Use [dev] to set configuration overrides for local 
 # development environments run using Netlify Dev - except 
 # for environment variables. Environment variables for Netlify 
 # Dev should be set under [context.dev.environment] instead.
 [dev]
-  framework = "svelte"
-  command = "npm run dev-port3000"
+  framework = "#custom"
+  targetPort = 3000
   port = 8888
+  command = "npm run dev-port3000"
   publish = "build"
 

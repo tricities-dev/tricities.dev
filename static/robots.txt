@@ -1,0 +1,6 @@
+# robots.txt for tricities.dev
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://tricities.dev/sitemap.xml

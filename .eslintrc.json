@@ -35,5 +35,10 @@
             "error",
             "always"
         ]
-    }
+    },
+    "ignorePatterns": [
+        "build/**/*",
+        "*.config.js",
+        "*.config.ts"
+    ]
 }

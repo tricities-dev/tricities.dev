@@ -11,6 +11,18 @@ The TriDev community is yours, and as such, this is an opportunity help contribu
 
 Feel free to add suggestions to Issues and submit pull requests for Issues that aren't taken. Happy hacking! 
 
+## Contributing Your RSS Feed
+
+TriDev community members can add their development blogs to our member feed! This helps share knowledge and keeps our community connected.
+
+### Quick Start
+1. Fork this repository
+2. Add your feed info to `netlify/functions/feeds-config.ts`
+3. Submit a pull request
+
+For detailed instructions, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+
 ## Developing
 
 Once you've cloned this project, you'll need to run `npm install` to grab all of the dependencies necessary.

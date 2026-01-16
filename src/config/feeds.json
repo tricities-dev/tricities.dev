@@ -1,0 +1,15 @@
+{
+  "feeds": [
+    {
+      "name": "Ryan Hayes",
+      "description": "Software and startup skills to boost your business and career",
+      "url": "https://ryanhayes.net/feed",
+      "website": "https://ryanhayes.net",
+      "twitter": "@RyannosaurusRex"
+    }
+  ],
+  "meta": {
+    "description": "RSS feeds from TriDev community members",
+    "howToContribute": "To add your feed, submit a pull request adding your feed info to this file"
+  }
+} 
