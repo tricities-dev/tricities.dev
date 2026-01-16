@@ -11,9 +11,17 @@
 	let featuredImage:string = '';
 	let date:Date = new Date();
 	let href:string = '';
+	let daysUntilEvent:number = 0;
 
 	// Length of the description check
 	let descriptionLength:number = 200;
+
+	// Calculate days until event
+	function getDaysUntil(eventDate: Date): number {
+		const now = new Date();
+		const diff = eventDate.getTime() - now.getTime();
+		return Math.ceil(diff / (1000 * 60 * 60 * 24));
+	}
 
 	onMount(async () => {
 		try {
@@ -23,11 +31,11 @@
 					'Access-Control-Allow-Origin': '*',
 				},
 			});
-			
+
 			if (!res.ok) {
 				throw new Error(`HTTP error! status: ${res.status}`);
 			}
-			
+
 			const data = await res.json();
 			name = data.name;
 			description = data.description;
@@ -35,6 +43,7 @@
 			featuredImage = data.featuredImage.length ? data.featuredImage : 'https://secure.meetupstatic.com/photos/event/e/0/1/c/clean_503817372.webp';
 			date = new Date(data.date);
 			href = data.href;
+			daysUntilEvent = getDaysUntil(date);
 		} catch (error) {
 			console.error('Failed to fetch meetup data:', error);
 			// Fallback to default values when API is not available
@@ -51,6 +60,7 @@
 			secondTuesday.setHours(18, 0, 0, 0);
 			date = secondTuesday;
 			href = 'https://www.meetup.com/tridev/';
+			daysUntilEvent = getDaysUntil(date);
 		}
 	});
 </script>
@@ -60,9 +70,10 @@
 		<img src={ featuredImage } alt="TriDev Meetup Talk" />
 	</div>
 	<div class="hero-content">
-		<h2 class="hero-content-event-name">
+		<p class="hero-social-proof">Join 100+ developers in the Tri-Cities</p>
+		<h1 class="hero-content-event-name">
 			{name}
-		</h2>
+		</h1>
 		<p class="hero-content-description">
 			{#if description.length > descriptionLength }
 				{ shortDescription }...
@@ -73,8 +84,21 @@
 		<p class="hero-content-date">
 			{ dateFormat(date) }
 			{' '} at <a href="https://maps.app.goo.gl/PgLg6EsQCxe9hAn4A" target="_blank">Spark Plaza</a>
+			{#if daysUntilEvent > 0 && daysUntilEvent <= 14}
+				<span class="urgency-badge">
+					{#if daysUntilEvent === 1}
+						Tomorrow!
+					{:else}
+						In {daysUntilEvent} days
+					{/if}
+				</span>
+			{/if}
 		</p>
-		<CtaLink title="RSVP" link="{href}" icon="meetup"/>
+		<div class="hero-cta-group">
+			<CtaLink title="RSVP on Meetup" link="{href}" icon="meetup"/>
+			<CtaLink title="Join Discord" link="https://discord.gg/B3JAaXvkCt" icon="discord"/>
+		</div>
+		<p class="hero-subtext">Free to attend. All skill levels welcome.</p>
 	</div>
 	<div class="hero-bg-img"></div>
 </div>
@@ -169,6 +193,49 @@
 		line-height: 1.6;
 	}
 
+	.hero-social-proof {
+		font-family: var(--body-font-family);
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--cta-btn-bg);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		margin: 0;
+	}
+
+	.hero-cta-group {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-top: 0.5rem;
+	}
+
+	.hero-subtext {
+		font-family: var(--body-font-family);
+		font-size: 0.875rem;
+		color: var(--secondary-text-color);
+		margin: 0;
+		opacity: 0.8;
+	}
+
+	.urgency-badge {
+		display: inline-block;
+		background: var(--cta-btn-bg);
+		color: var(--cta-btn-fg);
+		font-size: 0.75rem;
+		font-weight: 700;
+		padding: 0.25rem 0.75rem;
+		border-radius: 20px;
+		margin-left: 0.5rem;
+		animation: pulse 2s infinite;
+	}
+
+	@keyframes pulse {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.7; }
+	}
+
 	@media only screen and (max-width: 1366px) {
 		.hero {
 			gap: 1rem;
@@ -199,6 +266,10 @@
 
 		.hero-img {
 			border-radius: 10px;
+		}
+
+		.hero-cta-group {
+			justify-content: center;
 		}
 	}
 

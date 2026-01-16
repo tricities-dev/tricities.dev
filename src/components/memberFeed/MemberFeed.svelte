@@ -7,9 +7,35 @@
 	let memberFeed: memberPosts = [];
 	let loading = true;
 	let error: string | null = null;
+	let usingFallback = false;
 	let retryCount = 0;
 	const MAX_RETRIES = 3;
 	const RETRY_DELAY = 1000; // 1 second
+
+	// Fallback posts for when the RSS function isn't available (dev mode)
+	const fallbackPosts: memberPost[] = [
+		{
+			title: "Want to see your posts here?",
+			description: "TriDev members can add their RSS feed to be featured in this community feed. Share your tech articles, tutorials, and insights with the local developer community!",
+			postLink: "https://github.com/tricities-dev/tricities.dev",
+			siteLink: "https://github.com/tricities-dev/tricities.dev",
+			pubDate: new Date()
+		},
+		{
+			title: "Join the TriDev Community",
+			description: "Connect with fellow developers in the Tri-Cities area. Share knowledge, find opportunities, and grow together. We meet every 2nd Tuesday at Spark Plaza.",
+			postLink: "https://www.meetup.com/tridev/",
+			siteLink: "https://www.meetup.com/tridev/",
+			pubDate: new Date(Date.now() - 86400000)
+		},
+		{
+			title: "Get Involved on Discord",
+			description: "Can't wait until the next meetup? Join our Discord server to chat with members, ask questions, share projects, and stay up to date on events.",
+			postLink: "https://discord.gg/B3JAaXvkCt",
+			siteLink: "https://discord.gg/B3JAaXvkCt",
+			pubDate: new Date(Date.now() - 172800000)
+		}
+	];
 
 	async function fetchAndParseRSSFeeds(): Promise<memberPost[]> {
 		try {
@@ -67,15 +93,23 @@
 						}
 					}
 
+					// Extract author info from tridev namespace elements
+					const author = item.querySelector('tridev\\:author, author')?.textContent || undefined;
+					const authorWebsite = item.querySelector('tridev\\:authorWebsite, authorWebsite')?.textContent || undefined;
+					const authorTwitter = item.querySelector('tridev\\:authorTwitter, authorTwitter')?.textContent || undefined;
+
 					// Only add items that have at least a title or description
 					if (title || description) {
 						allPosts.push({
 							title,
 							description,
 							postLink,
-							siteLink: postLink, // Using post link as site link
+							siteLink: authorWebsite || postLink, // Use author website if available
 							pubDate: isNaN(pubDate.getTime()) ? new Date() : pubDate, // Use current date if invalid
-							imageUrl
+							imageUrl,
+							author,
+							authorWebsite,
+							authorTwitter
 						});
 					}
 				} catch (itemError) {
@@ -103,26 +137,32 @@
 			memberFeed = await fetchAndParseRSSFeeds();
 		} catch (err) {
 			console.error('Error fetching RSS feeds:', err);
-			error = err instanceof Error ? err.message : 'An error occurred while fetching the feeds';
+			// Use fallback posts instead of showing an error
+			memberFeed = fallbackPosts;
+			usingFallback = true;
 		} finally {
 			loading = false;
 		}
 	});
-
-	// TODO: Build a member RSS feed
 </script>
 
 <div class="member-feed">
 	{#if loading}
-		<p>Loading member posts...</p>
-	{:else if error}
-		<p class="error">Error: {error}</p>
+		<div class="loading-state">
+			<div class="loading-spinner"></div>
+			<p>Loading member posts...</p>
+		</div>
 	{:else if memberFeed.length === 0}
 		<p>No posts found.</p>
 	{:else}
 		{#each memberFeed as post}
-			<MemberFeedItem title={post.title} description={post.description} postLink={post.postLink} siteLink={post.siteLink} />
+			<MemberFeedItem title={post.title} postLink={post.postLink} author={post.author} authorWebsite={post.authorWebsite} />
 		{/each}
+		{#if !usingFallback}
+			<div class="contribute-cta">
+				<p>Have a tech blog? <a href="https://github.com/tricities-dev/tricities.dev" target="_blank" rel="noopener">Add your RSS feed</a> to be featured here!</p>
+			</div>
+		{/if}
 	{/if}
 </div>
 
@@ -139,8 +179,50 @@
 		padding: 2rem 0;
 	}
 
-	.error {
-		color: red;
+	.loading-state {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+		padding: 2rem;
+	}
+
+	.loading-spinner {
+		width: 40px;
+		height: 40px;
+		border: 3px solid var(--border-color);
+		border-top-color: var(--cta-btn-bg);
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+	}
+
+	@keyframes spin {
+		to { transform: rotate(360deg); }
+	}
+
+	.contribute-cta {
+		width: 100%;
+		text-align: center;
+		padding: 1.5rem;
+		border-top: 1px solid var(--border-color);
+		margin-top: 1rem;
+	}
+
+	.contribute-cta p {
+		font-family: var(--body-font-family);
+		font-size: 0.9rem;
+		color: var(--secondary-text-color);
+		margin: 0;
+	}
+
+	.contribute-cta a {
+		color: var(--cta-btn-bg);
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.contribute-cta a:hover {
+		text-decoration: underline;
 	}
 
 	@media only screen and (max-width: 430px) {

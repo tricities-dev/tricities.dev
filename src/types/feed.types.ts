@@ -5,6 +5,9 @@ export type memberPost = {
 	siteLink: string,
 	pubDate: Date,
 	imageUrl?: string,
+	author?: string,
+	authorWebsite?: string,
+	authorTwitter?: string,
 }
 
 export type memberPosts = memberPost[]

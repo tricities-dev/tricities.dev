@@ -63,21 +63,28 @@ export const handler: Handler = async (event) => {
     // Combine all unique namespaces
     const namespaceStr = Array.from(namespaceSet).join(' ');
 
-    // Extract items from each feed
-    const extractItems = (feed: string) => {
+    // Extract items from each feed and inject author info
+    const extractItemsWithAuthor = (feed: string, feedConfig: typeof feedsConfig.feeds[0]) => {
       const itemsMatch = feed.match(/<item>[\s\S]*?<\/item>/g) || [];
-      return itemsMatch;
+      return itemsMatch.map(item => {
+        // Inject author info as custom elements before closing </item>
+        const authorInfo = `
+    <tridev:author>${feedConfig.name}</tridev:author>
+    <tridev:authorWebsite>${feedConfig.website}</tridev:authorWebsite>
+    ${feedConfig.twitter ? `<tridev:authorTwitter>${feedConfig.twitter}</tridev:authorTwitter>` : ''}`;
+        return item.replace('</item>', `${authorInfo}</item>`);
+      });
     };
 
     // Combine all feeds into one XML document with collected namespaces
     const combinedFeed = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" ${namespaceStr}>
+<rss version="2.0" ${namespaceStr} xmlns:tridev="https://tricities.dev/ns/feeds">
   <channel>
     <title>TriDev Member Feeds</title>
     <description>Combined RSS feeds from TriDev members</description>
     <link>https://tricities.dev</link>
-    ${feeds.map(feed => {
-      const items = extractItems(feed);
+    ${feeds.map((feed, index) => {
+      const items = extractItemsWithAuthor(feed, feedsConfig.feeds[index]);
       return items.join('\n');
     }).join('\n')}
   </channel>

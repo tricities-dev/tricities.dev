@@ -17,7 +17,7 @@ TriDev community members can add their development blogs to our member feed! Thi
 
 ### Quick Start
 1. Fork this repository
-2. Add your feed info to `src/config/feeds.json`
+2. Add your feed info to `netlify/functions/feeds-config.ts`
 3. Submit a pull request
 
 For detailed instructions, see [CONTRIBUTING.md](CONTRIBUTING.md).

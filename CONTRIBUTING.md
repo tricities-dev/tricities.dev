@@ -16,38 +16,29 @@ We welcome TriDev community members to add their personal development blogs to o
 
 1. **Fork this repository**
 
-2. **Edit the feeds configuration file**: `src/config/feeds.json`
+2. **Edit the feeds configuration file**: `netlify/functions/feeds-config.ts`
 
 3. **Add your feed information** to the `feeds` array:
-   ```json
+   ```typescript
    {
      "name": "Your Name",
      "description": "Brief description of your blog/expertise",
      "url": "https://yourblog.com/feed",
      "website": "https://yourblog.com",
-     "twitter": "@yourtwitterhandle"
+     "twitter": "@yourtwitterhandle"  // optional
    }
    ```
 
-4. **Update the lastUpdated field** in the `meta` section to today's date (YYYY-MM-DD format)
-
-5. **Validate your feed configuration**:
-   ```bash
-   npm run validate-feeds
-   ```
-
-6. **Test your feed** by running the project locally:
+4. **Test your feed** by running the project locally:
    ```bash
    npm install
    npm run dev
    ```
+   Note: You need `npm run dev` (not `npm run vite-dev`) to test the RSS feed functionality, as it requires Netlify Functions.
 
-7. **Submit a pull request** with:
+5. **Submit a pull request** with:
    - A clear title: "Add [Your Name] RSS feed"
    - A brief description of your blog
-   - Any relevant links
-
-**Note**: The validation script (`npm run validate-feeds`) will automatically check your feed configuration for common issues like invalid URLs, duplicate feeds, and missing required fields.
 
 ### Feed Guidelines
 
@@ -59,7 +50,7 @@ We welcome TriDev community members to add their personal development blogs to o
 
 ### Example Entry
 
-```json
+```typescript
 {
   "name": "Jane Developer",
   "description": "Full-stack developer writing about React, Node.js, and modern web development",

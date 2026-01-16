@@ -1,15 +1,13 @@
 import { writable } from "svelte/store";
+import { browser } from "$app/environment";
 
-// Check if localStorage is available
-const isLocalStorageAvailable = typeof localStorage !== "undefined";
-
-const currentTheme =  isLocalStorageAvailable ? localStorage.getItem("currentTheme") || "dark" : "dark";
+const currentTheme = browser ? localStorage.getItem("currentTheme") || "dark" : "dark";
 
 export const themeStore = writable(currentTheme);
 export const menuStore = writable(false);
 
 // Subscribe to changes and save to local storage if available
-if (isLocalStorageAvailable) {
+if (browser) {
 	themeStore.subscribe(($themeData) => {
 		localStorage.setItem("currentTheme", $themeData);
 	});
